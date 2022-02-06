@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,10 +9,21 @@
 		<title>Intensive Task</title>
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+		<nav class="navbar navbar-expand-lg bg-secondary navbar-dark py-3 fixed-top">
 			<div class="container">
-    			<a href="#" class="navbar-brand">Andersen Intensive</a>
+    			<a href="#" class="navbar-brand"><span class="text-warning"><h5>Andersen Intensive</h5></span></a>
 			</div>
 		</nav>
+		<section class="bg-dark text-light p-5 text-center text-sm-start">
+        	<div class="container">
+            	<div class="d-sm-flex align-items-center justify-content-between">
+                	<div>
+                    	<h1>Even <span class="text-warning">Doge!</span></h1>
+                    	<p class="lead my-4">Uses Jenkins with GitHub hook trigers.</p>
+                	</div>
+                	<img class="img-fluid w-50 d-none d-sm-block" src='<c:url value="/static/doge.jpg"></c:url>' alt="">
+            	</div>
+        	</div>
+    </section>
 	</body>
 </html>
