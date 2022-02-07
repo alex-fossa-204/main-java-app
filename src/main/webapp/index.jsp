@@ -25,5 +25,14 @@
             	</div>
         	</div>
     	</section>
+    	<section class="bg-secondary text-light p-4">
+        	<div class="container-fluid">
+            	<div class="d-md-flex justify-content-center align-items-center">
+                	<h4 class="mb-3 mb-md-0">
+                    	Start Using Jenkins now and dont forget to use Relay Webhook;)
+                	</h4>
+            	</div>
+        	</div>
+    	</section>
 	</body>
 </html>
