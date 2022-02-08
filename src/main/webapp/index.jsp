@@ -25,18 +25,7 @@
             	</div>
         	</div>
     	</section>
-    	<section class="bg-dark text-light p-5 text-center text-sm-start">
-        	<div class="container">
-            	<div class="d-sm-flex align-items-center justify-content-between">
-                	<div>
-                    	<h1>Even <span class="text-warning">Doge!</span></h1>
-                    	<p class="lead my-4">Uses Jenkins with GitHub hook trigers.</p>
-                	</div>
-                	<img class="img-fluid w-50 d-none d-sm-block" src='<c:url value="/static/doge.jpg"></c:url>' alt="">
-            	</div>
-        	</div>
-    	</section>
-    	<!--  <section class="bg-secondary text-light p-4">
+    	<section class="bg-secondary text-light p-4">
         	<div class="container-fluid">
             	<div class="d-md-flex justify-content-center align-items-center">
                 	<h4 class="mb-3 mb-md-0">
@@ -44,6 +33,6 @@
                 	</h4>
             	</div>
         	</div>
-    	</section>-->
+    	</section>
 	</body>
 </html>
