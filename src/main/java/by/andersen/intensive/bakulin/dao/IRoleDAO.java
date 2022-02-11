@@ -1,9 +1,10 @@
 package by.andersen.intensive.bakulin.dao;
 
-import by.andersen.intensive.bakulin.model.Role;
+import by.andersen.intensive.bakulin.dao.exception.DAOException;
+import by.andersen.intensive.bakulin.entity.Role;
 
-public interface IRoleDAO extends DAO<Role, Long>{
+public interface IRoleDAO extends DAO<Role>{
 	
-	Role findRoleByName(String roleName);
+	Role findRoleByName(String roleName) throws DAOException;
 	
 }

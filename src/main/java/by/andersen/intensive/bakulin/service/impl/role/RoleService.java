@@ -1,8 +1,8 @@
-package by.andersen.intensive.bakulin.service.implementation.role;
+package by.andersen.intensive.bakulin.service.impl.role;
 
 import java.util.List;
 
-import by.andersen.intensive.bakulin.model.Role;
+import by.andersen.intensive.bakulin.entity.Role;
 import by.andersen.intensive.bakulin.service.IRoleService;
 
 public class RoleService implements IRoleService{

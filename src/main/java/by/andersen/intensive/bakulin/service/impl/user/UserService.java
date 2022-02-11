@@ -1,8 +1,8 @@
-package by.andersen.intensive.bakulin.service.implementation.user;
+package by.andersen.intensive.bakulin.service.impl.user;
 
 import java.util.List;
 
-import by.andersen.intensive.bakulin.model.User;
+import by.andersen.intensive.bakulin.entity.User;
 import by.andersen.intensive.bakulin.service.IUserService;
 
 public class UserService implements IUserService{
