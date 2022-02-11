@@ -7,6 +7,8 @@ import java.util.LinkedList;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+import com.mysql.jdbc.Driver;
+
 import by.andersen.intensive.bakulin.dao.connection.sql.constant.ConnectionConstant;
 
 public class ConnectionFactory {
@@ -23,6 +25,7 @@ public class ConnectionFactory {
 	public static Connection newInstance() {
 		Connection connection = null;
 		registerConnectionDriver();
+		//String dbUrl = ConnectionConstant.RESOURCE_BUNDLE.getString(ConnectionConstant.DATABASE_URL_BUNDLE_KEY);
 		try {
 			connection = DriverManager.getConnection(ConnectionConstant.DATABASE_URL_BUNDLE_KEY, ConnectionPropertiesFactory.newInstance());
 		} catch (SQLException e) {
@@ -34,7 +37,7 @@ public class ConnectionFactory {
 	
 	private static void registerConnectionDriver() {
 		try {
-			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+			DriverManager.registerDriver(new org.postgresql.Driver());
 		} catch (SQLException e) {
 			throw new ExceptionInInitializerError(CONNECTION_WAS_NOT_CREATED_EXCEPTION_MESSAGE);
 		}

@@ -14,26 +14,23 @@ import by.andersen.intensive.bakulin.dao.connection.sql.factory.ConnectionFactor
 
 public class ConnectionPool {
 	
-    private static Lock poolInstanceLocker;
+    private static Lock poolInstanceLocker = new ReentrantLock();
     
-    private static Condition poolInstanceCondition;
+    private static Condition poolInstanceCondition = poolInstanceLocker.newCondition();
     
-    private static AtomicBoolean poolAtomicBoolean;
+    private static AtomicBoolean poolAtomicBoolean = new AtomicBoolean(true);
     
     private static ConnectionPool connectionPoolInstance;
     
     private static final String COULD_NOT_RECEIVE_CONNECTION_EXCEPTION_MESSAGE = "Could not receive connection";
 
-    private static final String COULD_CLOSE_CONNECTION_POOL_EXCEPTION_MESSAGE = "Could not close connection pool";
+    private static final String COULD_NOT_CLOSE_CONNECTION_POOL_EXCEPTION_MESSAGE = "Could not close connection pool";
     
     private final LinkedList<Connection> connectionQueue;
     
         
     private ConnectionPool() {
-    	connectionQueue = connectionQueueInitializer();
-    	poolInstanceLocker = new ReentrantLock();
-    	poolInstanceCondition = poolInstanceLocker.newCondition();
-    	poolAtomicBoolean = new AtomicBoolean(true);
+    	connectionQueue = connectionQueueInitializer();   	
     }
     
     public static ConnectionPool getInstance() {
@@ -61,7 +58,7 @@ public class ConnectionPool {
     	return connection;
     }
     
-    public void putConnection(Connection connection) {
+    public void returnBackConnection(Connection connection) {
     	poolInstanceLocker.lock();
     	try {
 			connectionQueue.addLast(connection);
@@ -76,7 +73,7 @@ public class ConnectionPool {
 			try {
 				e.close();
 			} catch (SQLException e1) {
-				throw new IllegalStateException(COULD_CLOSE_CONNECTION_POOL_EXCEPTION_MESSAGE);
+				throw new IllegalStateException(COULD_NOT_CLOSE_CONNECTION_POOL_EXCEPTION_MESSAGE);
 			}
 		});
 	}
@@ -101,11 +98,9 @@ public class ConnectionPool {
 	private LinkedList<Connection> connectionQueueInitializer() {
 		LinkedList<Connection> connectionQueue = new LinkedList<Connection>();
 		int connectionQueueSize = Integer.parseInt(ConnectionConstant.CONNECTION_POOL_QUEUE_SIZE_BUNDLE_KEY);
-		
 		for(int queueIndex = 0; queueIndex < connectionQueueSize; queueIndex++) {
 			connectionQueue.add(ConnectionFactory.newInstance());
 		}
-		
 		return connectionQueue;
 	}
 	

@@ -35,8 +35,8 @@ public abstract class SqlAbstractDAO<E extends Entity> implements DAO<E> {
 	@Override
 	public boolean save(E e) throws DAOException {
 		String sqlQuery = baseSQLQueries.get(QUERY_KEY_INSERT_ENTITY);
-		List<String> entityParamenters = getEntityParameters(e);
-		return executeSQLQuery(sqlQuery, entityParamenters);
+		List<Object> entityParameters = getEntityParameters(e);
+		return executeSQLQuery(sqlQuery, entityParameters.toArray());
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public abstract class SqlAbstractDAO<E extends Entity> implements DAO<E> {
 		try (PreparedStatement preparedStatement = prepareStatementForSqlQuery(sqlQuery, id)) {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				entity = buildEntity();
+				entity = buildEntity(resultSet);
 			}
 		} catch (SQLException sqlException) {
 			throw new DAOException(sqlException.getMessage(), sqlException);
@@ -61,7 +61,7 @@ public abstract class SqlAbstractDAO<E extends Entity> implements DAO<E> {
 		try (Statement statement = connection.createStatement()) {
 			ResultSet resultSet = statement.executeQuery(sqlQuery);
 			while (resultSet.next()) {
-				E entity = buildEntity();
+				E entity = buildEntity(resultSet);
 				entitiesList.add(entity);
 			}
 		} catch (SQLException sqlException) {
@@ -72,10 +72,10 @@ public abstract class SqlAbstractDAO<E extends Entity> implements DAO<E> {
 
 	@Override
 	public boolean update(E e) throws DAOException {
-		List<String> entityParamenters = getEntityParameters(e);
+		List<Object> entityParameters = getEntityParameters(e);
 		String sqlQuery = baseSQLQueries.get(QUERY_KEY_UPDATE_ENTITY);
-		entityParamenters.add(String.valueOf(e.getId()));
-		return executeSQLQuery(sqlQuery, entityParamenters);
+		entityParameters.add(e.getId());
+		return executeSQLQuery(sqlQuery, entityParameters.toArray());
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public abstract class SqlAbstractDAO<E extends Entity> implements DAO<E> {
 		return result;
 	}
 
-	private PreparedStatement prepareStatementForSqlQuery(String sqlQuery, Object... queryParameters)
+	public PreparedStatement prepareStatementForSqlQuery(String sqlQuery, Object... queryParameters)
 			throws DAOException {
 		PreparedStatement preparedStatement = null;
 		try {
@@ -132,8 +132,8 @@ public abstract class SqlAbstractDAO<E extends Entity> implements DAO<E> {
 	
 	public abstract Map<String, String> initializeBaseQueries();
 
-	public abstract List<String> getEntityParameters(E e);
+	public abstract List<Object> getEntityParameters(E e);
 
-	public abstract E buildEntity() throws DAOException;
+	public abstract E buildEntity(ResultSet resultSet) throws DAOException;
 
 }

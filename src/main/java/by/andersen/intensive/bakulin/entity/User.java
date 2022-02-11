@@ -22,11 +22,13 @@ public class User extends Entity implements Serializable {
 	private String phoneNumber;
 
 	private String emailAddress;
+	
+	private String password;
 
-	private Role userRole;
+	private String userRole;
 
 	public User(String userName, String firstName, String secondName, String lastName, int age, String phoneNumber,
-			String emailAddress, Role userRole) {
+			String emailAddress, String userRole) {
 		super();
 		this.userName = userName;
 		this.firstName = firstName;
@@ -37,11 +39,23 @@ public class User extends Entity implements Serializable {
 		this.emailAddress = emailAddress;
 		this.userRole = userRole;
 	}
+	
+	public User(String userName, String firstName, String lastName, int age, String phoneNumber, String emailAddress,
+			String userRole) {
+		super();
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+		this.phoneNumber = phoneNumber;
+		this.emailAddress = emailAddress;
+		this.userRole = userRole;
+	}
 
 	public User() {
 		super();
 	}
-
+	
 	public String getUserName() {
 		return userName;
 	}
@@ -98,11 +112,19 @@ public class User extends Entity implements Serializable {
 		this.emailAddress = emailAddress;
 	}
 
-	public Role getUserRole() {
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getUserRole() {
 		return userRole;
 	}
 
-	public void setUserRole(Role userRole) {
+	public void setUserRole(String userRole) {
 		this.userRole = userRole;
 	}
 
@@ -110,8 +132,8 @@ public class User extends Entity implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result
-				+ Objects.hash(age, emailAddress, firstName, lastName, phoneNumber, secondName, userName, userRole);
+		result = prime * result + Objects.hash(age, emailAddress, firstName, lastName, password, phoneNumber,
+				secondName, userName, userRole);
 		return result;
 	}
 
@@ -126,8 +148,9 @@ public class User extends Entity implements Serializable {
 		User other = (User) obj;
 		return age == other.age && Objects.equals(emailAddress, other.emailAddress)
 				&& Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName)
-				&& Objects.equals(phoneNumber, other.phoneNumber) && Objects.equals(secondName, other.secondName)
-				&& Objects.equals(userName, other.userName) && Objects.equals(userRole, other.userRole);
+				&& Objects.equals(password, other.password) && Objects.equals(phoneNumber, other.phoneNumber)
+				&& Objects.equals(secondName, other.secondName) && Objects.equals(userName, other.userName)
+				&& Objects.equals(userRole, other.userRole);
 	}
 
 	@Override
@@ -147,12 +170,12 @@ public class User extends Entity implements Serializable {
 		builder.append(phoneNumber);
 		builder.append(", emailAddress=");
 		builder.append(emailAddress);
+		builder.append(", password=");
+		builder.append(password);
 		builder.append(", userRole=");
 		builder.append(userRole);
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
-	
+
 }
