@@ -64,6 +64,45 @@ public class SqlUserDAO extends SqlAbstractDAO<User> implements IUserDAO {
 		return user;
 	}
 
+
+
+	@Override
+	public User buildEntity(ResultSet resultSet) throws DAOException {
+		User user = new User();
+		try {
+			int id = resultSet.getInt(ID_COLUMN_LABEL);
+			user.setId(id);
+			
+			String userName = resultSet.getString(USER_USERNAME_COL_LABEL);
+			user.setUserName(userName);
+			
+			String firstName = resultSet.getString(USER_FIRSTNAME_COL_LABEL);
+			user.setFirstName(firstName);
+			
+			String secondName = resultSet.getString(USER_SECONDNAME_COL_LABEL);
+			user.setSecondName(secondName);
+			
+			String lastName = resultSet.getString(USER_LASTNAME_COL_LABEL);
+			user.setLastName(lastName);
+			
+			int age = resultSet.getInt(USER_AGE_COL_LABEL);
+			user.setAge(age);
+			
+			String phoneNumber = resultSet.getString(USER_PHONE_COL_LABEL);
+			user.setPhoneNumber(phoneNumber);
+			
+			String email = resultSet.getString(USER_EMAIL_COL_LABEL);
+			user.setEmailAddress(email);
+			
+			String userRole = resultSet.getString(USER_ROLE_COL_LABEL);
+			user.setUserRole(userRole);
+			
+		} catch (SQLException sqlException) {
+			throw new DAOException(sqlException.getMessage(), sqlException);
+		}
+		return user;
+	}
+	
 	@Override
 	public Map<String, String> initializeBaseQueries() {
 		Map<String, String> baseQueries = new HashMap<String, String>();
@@ -104,43 +143,6 @@ public class SqlUserDAO extends SqlAbstractDAO<User> implements IUserDAO {
 		entityParameters.add(userRole);
 		
 		return entityParameters;
-	}
-
-	@Override
-	public User buildEntity(ResultSet resultSet) throws DAOException {
-		User user = new User();
-		try {
-			int id = resultSet.getInt(ID_COLUMN_LABEL);
-			user.setId(id);
-			
-			String userName = resultSet.getString(USER_USERNAME_COL_LABEL);
-			user.setUserName(userName);
-			
-			String firstName = resultSet.getString(USER_FIRSTNAME_COL_LABEL);
-			user.setFirstName(firstName);
-			
-			String secondName = resultSet.getString(USER_SECONDNAME_COL_LABEL);
-			user.setSecondName(secondName);
-			
-			String lastName = resultSet.getString(USER_LASTNAME_COL_LABEL);
-			user.setLastName(lastName);
-			
-			int age = resultSet.getInt(USER_AGE_COL_LABEL);
-			user.setAge(age);
-			
-			String phoneNumber = resultSet.getString(USER_PHONE_COL_LABEL);
-			user.setPhoneNumber(phoneNumber);
-			
-			String email = resultSet.getString(USER_EMAIL_COL_LABEL);
-			user.setEmailAddress(email);
-			
-			String userRole = resultSet.getString(USER_ROLE_COL_LABEL);
-			user.setUserRole(userRole);
-			
-		} catch (SQLException sqlException) {
-			throw new DAOException(sqlException.getMessage(), sqlException);
-		}
-		return user;
 	}
 
 }

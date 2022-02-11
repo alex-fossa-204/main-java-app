@@ -19,6 +19,8 @@ import by.andersen.intensive.bakulin.entity.User;
 public class TestDAO {
 
 	ConnectionManager connectionManager = new ConnectionManager();
+	
+	String username = "bigWolf13";
 
 	@Test
 	public void testFindAll() {
@@ -58,8 +60,6 @@ public class TestDAO {
 			System.out.println(sqlException.getMessage());
 		}
 	}
-
-	String username = "bigWolf13";
 
 	@Test
 	public void testCreate() {

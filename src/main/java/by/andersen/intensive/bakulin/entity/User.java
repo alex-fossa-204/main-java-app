@@ -26,6 +26,20 @@ public class User extends Entity implements Serializable {
 	private String password;
 
 	private String userRole;
+	
+	public User(String userName, String firstName, String secondName, String lastName, int age, String phoneNumber,
+			String emailAddress, String password, String userRole) {
+		super();
+		this.userName = userName;
+		this.firstName = firstName;
+		this.secondName = secondName;
+		this.lastName = lastName;
+		this.age = age;
+		this.phoneNumber = phoneNumber;
+		this.emailAddress = emailAddress;
+		this.password = password;
+		this.userRole = userRole;
+	}
 
 	public User(String userName, String firstName, String secondName, String lastName, int age, String phoneNumber,
 			String emailAddress, String userRole) {
@@ -40,16 +54,16 @@ public class User extends Entity implements Serializable {
 		this.userRole = userRole;
 	}
 	
-	public User(String userName, String firstName, String lastName, int age, String phoneNumber, String emailAddress,
-			String userRole) {
+	public User(String userName, String firstName, String secondName, String lastName, int age, String phoneNumber,
+			String emailAddress) {
 		super();
 		this.userName = userName;
 		this.firstName = firstName;
+		this.secondName = secondName;
 		this.lastName = lastName;
 		this.age = age;
 		this.phoneNumber = phoneNumber;
 		this.emailAddress = emailAddress;
-		this.userRole = userRole;
 	}
 
 	public User() {
