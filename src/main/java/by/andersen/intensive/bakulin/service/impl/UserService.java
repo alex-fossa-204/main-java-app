@@ -1,5 +1,6 @@
 package by.andersen.intensive.bakulin.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import by.andersen.intensive.bakulin.dao.IUserDAO;
@@ -12,6 +13,10 @@ import by.andersen.intensive.bakulin.service.IUserService;
 import by.andersen.intensive.bakulin.service.exception.ServiceException;
 
 public class UserService implements IUserService {
+
+	public UserService() {
+		super();
+	}
 
 	@Override
 	public boolean addUser(String userName, String firstName, String secondName, String lastName, int age,
@@ -42,6 +47,23 @@ public class UserService implements IUserService {
 			throw new ServiceException(exception.getMessage(), exception);
 		}
 		return users;
+	}
+
+	@Override
+	public List<User> getAllUsersPageable(int page, int recordsPerPage, int totalPages) throws ServiceException {
+		List<User> usersPageable = null;
+		try (ConnectionManager connectionManager = new ConnectionManager()) {
+			IUserDAO userDAO = new SqlUserDAO(connectionManager.getConnection());
+
+			List<User> allUsers = userDAO.findAll();
+			usersPageable = paginateUsers(page, recordsPerPage, allUsers, totalPages);
+
+		} catch (DAOException daoException) {
+			throw new ServiceException(daoException.getMessage(), daoException);
+		} catch (Exception exception) {
+			throw new ServiceException(exception.getMessage(), exception);
+		}
+		return usersPageable;
 	}
 
 	@Override
@@ -96,4 +118,48 @@ public class UserService implements IUserService {
 		}
 		return result;
 	}
+
+	private List<User> paginateUsers(int page, int recordsPerPage, List<User> allUsers, int totalPages) {
+		List<User> result = new ArrayList<>();
+		int allRecords = allUsers.size();
+		int recordCounter = 0;
+		if (page < totalPages) {
+			if (page == 1) {
+				for (int record = 0; record < recordsPerPage; record++) {
+					User person = allUsers.get(record);
+					result.add(person);
+					++recordCounter;
+				}
+			}
+			if (page > 1) {
+				recordCounter = recordsPerPage * (page - 1);
+				for (int record = recordCounter; record < page * recordsPerPage; record++) {
+					User person = allUsers.get(record);
+					result.add(person);
+					++recordCounter;
+				}
+			}
+		}
+		if (page == totalPages) {
+			recordCounter = recordsPerPage * (page - 1);
+			for (int record = recordCounter; record < allRecords; record++) {
+				User person = allUsers.get(record);
+				result.add(person);
+				++recordCounter;
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public int getUsersQuanity() throws ServiceException {
+		int usersQuantity = 0;
+		try {
+			List<User> users = getAllUsers();
+		} catch (ServiceException exception) {
+			throw exception;
+		}
+		return usersQuantity;
+	}
+
 }
