@@ -78,4 +78,21 @@ public class ServiceTest {
 
 		System.out.println("\n");
 	}
+	
+	@Test
+	public void testServiceFindAllUsersPageable() {
+		System.out.println("Service Find All Users Pageable:");
+		
+		IUserService userService = new UserService();
+		List<User> users = null;
+		try {
+			users = userService.getAllUsersPageable(1, 2, 1);
+		} catch (ServiceException e) {
+			System.err.println(e.getMessage());
+		}
+		
+		users.stream().forEach(e -> System.out.println(e));
+
+		System.out.println("\n");
+	}
 }
