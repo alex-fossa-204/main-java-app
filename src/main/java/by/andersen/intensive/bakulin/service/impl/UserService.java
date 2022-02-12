@@ -156,6 +156,7 @@ public class UserService implements IUserService {
 		int usersQuantity = 0;
 		try {
 			List<User> users = getAllUsers();
+			usersQuantity = users.size();
 		} catch (ServiceException exception) {
 			throw exception;
 		}
