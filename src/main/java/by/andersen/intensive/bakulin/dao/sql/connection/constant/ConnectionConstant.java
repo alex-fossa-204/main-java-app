@@ -1,8 +1,8 @@
-package by.andersen.intensive.bakulin.dao.connection.sql.constant;
+package by.andersen.intensive.bakulin.dao.sql.connection.constant;
+
+import static by.andersen.intensive.bakulin.dao.sql.connection.constant.PropertiesConstant.*;
 
 import java.util.ResourceBundle;
-
-import static by.andersen.intensive.bakulin.dao.connection.sql.constant.PropertiesConstant.*;
 
 public class ConnectionConstant {
 	

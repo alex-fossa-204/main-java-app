@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import by.andersen.intensive.bakulin.dao.IUserDAO;
-import by.andersen.intensive.bakulin.dao.connection.sql.manager.ConnectionManager;
 import by.andersen.intensive.bakulin.dao.exception.DAOException;
-import by.andersen.intensive.bakulin.dao.impl.sql.SqlUserDAO;
+import by.andersen.intensive.bakulin.dao.sql.connection.manager.ConnectionManager;
+import by.andersen.intensive.bakulin.dao.sql.impl.SqlUserDAO;
 import by.andersen.intensive.bakulin.entity.RoleEnum;
 import by.andersen.intensive.bakulin.entity.User;
 import by.andersen.intensive.bakulin.service.IUserService;

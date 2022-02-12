@@ -1,8 +1,8 @@
-package by.andersen.intensive.bakulin.dao.connection.sql.factory;
+package by.andersen.intensive.bakulin.dao.sql.connection.factory;
 
 import java.util.Properties;
 
-import by.andersen.intensive.bakulin.dao.connection.sql.constant.ConnectionConstant;
+import by.andersen.intensive.bakulin.dao.sql.connection.constant.ConnectionConstant;
 
 public class ConnectionPropertiesFactory {
 	

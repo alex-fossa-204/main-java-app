@@ -1,4 +1,4 @@
-package by.andersen.intensive.bakulin.dao.connection.sql.pool;
+package by.andersen.intensive.bakulin.dao.sql.connection.pool;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -9,8 +9,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Predicate;
 
-import by.andersen.intensive.bakulin.dao.connection.sql.constant.ConnectionConstant;
-import by.andersen.intensive.bakulin.dao.connection.sql.factory.ConnectionFactory;
+import by.andersen.intensive.bakulin.dao.sql.connection.constant.ConnectionConstant;
+import by.andersen.intensive.bakulin.dao.sql.connection.factory.ConnectionFactory;
 
 public class ConnectionPool {
 	

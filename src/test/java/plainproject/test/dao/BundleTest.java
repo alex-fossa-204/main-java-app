@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 import org.junit.Test;
 
-import by.andersen.intensive.bakulin.dao.connection.sql.constant.ConnectionConstant;
+import by.andersen.intensive.bakulin.dao.sql.connection.constant.ConnectionConstant;
 
 public class BundleTest {
 	

@@ -1,4 +1,4 @@
-package by.andersen.intensive.bakulin.dao.connection.sql.constant;
+package by.andersen.intensive.bakulin.dao.sql.connection.constant;
 
 public enum PropertiesConstant {
 	

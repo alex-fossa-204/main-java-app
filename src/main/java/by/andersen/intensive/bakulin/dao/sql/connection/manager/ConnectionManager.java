@@ -1,9 +1,9 @@
-package by.andersen.intensive.bakulin.dao.connection.sql.manager;
+package by.andersen.intensive.bakulin.dao.sql.connection.manager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import by.andersen.intensive.bakulin.dao.connection.sql.pool.ConnectionPool;
+import by.andersen.intensive.bakulin.dao.sql.connection.pool.ConnectionPool;
 
 public class ConnectionManager implements AutoCloseable {
 

@@ -1,4 +1,4 @@
-package by.andersen.intensive.bakulin.dao.impl.sql;
+package by.andersen.intensive.bakulin.dao.sql.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

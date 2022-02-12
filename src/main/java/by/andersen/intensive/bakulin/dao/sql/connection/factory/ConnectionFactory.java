@@ -1,4 +1,4 @@
-package by.andersen.intensive.bakulin.dao.connection.sql.factory;
+package by.andersen.intensive.bakulin.dao.sql.connection.factory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 
 import com.mysql.jdbc.Driver;
 
-import by.andersen.intensive.bakulin.dao.connection.sql.constant.ConnectionConstant;
+import by.andersen.intensive.bakulin.dao.sql.connection.constant.ConnectionConstant;
 
 public class ConnectionFactory {
 	
