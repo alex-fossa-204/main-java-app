@@ -10,7 +10,6 @@
   <packaging>war</packaging>
 
   <name>plainproject Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
   <properties>
@@ -37,11 +36,6 @@
 		<artifactId>jstl</artifactId>
 		<version>1.2</version>
 	</dependency>
-	<dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.6</version>
-    </dependency>
 	<dependency>
     	<groupId>org.postgresql</groupId>
     	<artifactId>postgresql</artifactId>

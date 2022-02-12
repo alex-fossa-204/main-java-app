@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,9 +43,6 @@ public class SqlUserDAO extends SqlAbstractDAO<User> implements IUserDAO {
 	private static final String INSERT_USER_QUERY = "INSERT INTO users (username, user_firstname, user_secondname, user_lastname, user_age, user_phone, user_email, user_role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 	private static final String UPDATE_USER_QUERY = "UPDATE users SET username=?, user_firstname=?, user_secondname=?, user_lastname=?, user_age=?, user_phone=?, user_email=?, user_role=? WHERE id = ?";
-	
-	private int recordsNumber;
-	
 	
 	public SqlUserDAO(Connection connection) {
 		super(connection);

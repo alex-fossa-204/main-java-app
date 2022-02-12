@@ -25,7 +25,7 @@ public class CommandManager {
 			command = commandEnumValue.getCommand();
 		} catch (IllegalArgumentException illegalArgumentException) {
 			String message = String.format("%s %s", COMMAND_ERROR_MESSAGE, action);
-			httpServletRequest.setAttribute(MESSAGE_ATTRIBUTE.getAttributeValue(), message);
+			httpServletRequest.setAttribute(MESSAGE_ATTRIBUTE.getAttributeName(), message);
 		}
 		return command;
 	}

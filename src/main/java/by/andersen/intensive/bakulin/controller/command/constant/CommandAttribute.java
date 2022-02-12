@@ -14,7 +14,7 @@ public enum CommandAttribute {
 		this.attributeValue = attributeValue;
 	}
 	
-	public String getAttributeValue() {
+	public String getAttributeName() {
 		return this.attributeValue;
 	}
 }

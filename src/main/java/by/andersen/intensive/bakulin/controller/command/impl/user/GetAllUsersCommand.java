@@ -37,9 +37,9 @@ public class GetAllUsersCommand implements Command {
 			int recordsQuantity = userService.getUsersQuanity();
 			pagesQuantity = calculatePagesQuantity(recordsQuantity, RECORDS_PER_PAGE);
 			List<User> usersPage = userService.getAllUsersPageable(pageIndex, RECORDS_PER_PAGE, pagesQuantity);
-			httpServletRequest.setAttribute(NUMBER_OF_PAGES_ATTRIBUTE.getAttributeValue(), pagesQuantity);
-			httpServletRequest.setAttribute(CURRENT_PAGE_INDEX.getAttributeValue(), pageIndex);
-			httpServletRequest.setAttribute(USERS_PAGE_CONTENT_ATTRIBUTE.getAttributeValue(), usersPage);
+			httpServletRequest.setAttribute(NUMBER_OF_PAGES_ATTRIBUTE.getAttributeName(), pagesQuantity);
+			httpServletRequest.setAttribute(CURRENT_PAGE_INDEX.getAttributeName(), pageIndex);
+			httpServletRequest.setAttribute(USERS_PAGE_CONTENT_ATTRIBUTE.getAttributeName(), usersPage);
 			resultPage = new Page(USERS_PAGE_PATH.getPagePath(), false);
 		} catch (ServiceException e) {
 			resultPage = new Page(ERROR_PAGE_PATH.getPagePath(), true, SERVICE_ERROR_MESSAGE.getMessage());

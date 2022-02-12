@@ -3,11 +3,6 @@ package by.andersen.intensive.bakulin.dao.sql.connection.factory;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.LinkedList;
-import java.util.Properties;
-import java.util.ResourceBundle;
-
-import com.mysql.jdbc.Driver;
 
 import by.andersen.intensive.bakulin.dao.sql.connection.constant.ConnectionConstant;
 
