@@ -26,15 +26,14 @@ public class AddUserCommand implements Command {
 		int age = Integer.valueOf(httpServletRequest.getParameter(AGE_PARAMETER.getParameterName()));
 		String phoneNumber = httpServletRequest.getParameter(USERNAME_PARAMETER.getParameterName());
 		String emailAddress = httpServletRequest.getParameter(USER_EMAIL_PARAMETER.getParameterName());
-		
 		IUserService userService = new UserService();
 		try {
 			isAddSuccessfull = userService.addUser(username, firstName, secondName, lastName, age, phoneNumber, emailAddress);
 			if(isAddSuccessfull) {
-				resultPage = new Page(USERS_PAGE_PATH.getPagePath(), false, USER_DELETED_SUCCESSFULLY_MESSAGE.getMessage());
+				resultPage = new Page(USERS_PAGE_PATH.getPagePath(), false, USER_ADDED_SUCCESSFULLY_MESSAGE.getMessage());
 			}
 			if(!isAddSuccessfull) {
-				resultPage = new Page(ERROR_PAGE_PATH.getPagePath(), true, USER_DELETE_FAILED_MESSAGE.getMessage());
+				resultPage = new Page(ERROR_PAGE_PATH.getPagePath(), true, USER_ADD_FAILED_MESSAGE.getMessage());
 			}
 		} catch (ServiceException e) {
 			resultPage = new Page(ERROR_PAGE_PATH.getPagePath(), true, SERVICE_ERROR_MESSAGE.getMessage());
@@ -42,5 +41,14 @@ public class AddUserCommand implements Command {
 		
 		return resultPage;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("AddUserCommand []");
+		return builder.toString();
+	}
+	
+	
 
 }

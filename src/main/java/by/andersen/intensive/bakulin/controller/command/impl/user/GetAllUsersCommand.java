@@ -18,7 +18,7 @@ import java.util.List;
 
 public class GetAllUsersCommand implements Command {
 	
-    private static final int RECORDS_PER_PAGE = 5;
+    private static final int RECORDS_PER_PAGE = 8;
     
     private static final int FIRST_PAGE_INDEX = 1;
 
@@ -50,5 +50,14 @@ public class GetAllUsersCommand implements Command {
 	private int calculatePagesQuantity(int recordsQuantity, int recordsPerPage) {
 		return (int) Math.ceil(recordsQuantity * 1.0 / recordsPerPage);
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("GetAllUsersCommand []");
+		return builder.toString();
+	}
+	
+	
 
 }

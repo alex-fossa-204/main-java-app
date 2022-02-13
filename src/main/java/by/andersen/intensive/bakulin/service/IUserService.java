@@ -17,7 +17,7 @@ public interface IUserService {
 	
 	User getUserByUserName(String username) throws ServiceException;
 	
-	boolean updateUser(String userName, String firstName, String secondName, String lastName, int age, String phoneNumber, String emailAddress, String userRole) throws ServiceException;
+	boolean updateUser(String oldUserName, String userName, String firstName, String secondName, String lastName, int age, String phoneNumber, String emailAddress, String userRole) throws ServiceException;
 	
 	boolean deleteUser(long id) throws ServiceException;
 	

@@ -4,7 +4,8 @@ public enum PageEnum {
 	
 	INDEX_PAGE_PATH("/index.jsp"),
 	USERS_PAGE_PATH("/users-page.jsp"),
-	ERROR_PAGE_PATH("/error-page.jsp");
+	ERROR_PAGE_PATH("/error-page.jsp"),
+	USER_EDIT_FORM_PATH("/user-edit-page.jsp");
 	
 	String pagePath;
 	

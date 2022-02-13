@@ -4,17 +4,21 @@ public enum MessageEnum {
 	
 	NONE_MESSAGE("NONE"),
 	
-	COMMAND_ERROR_MESSAGE("Command Not Found."),
-	SERVICE_ERROR_MESSAGE("Service error. Tell The Adminstator"),
+	_MESSAGE(" Message"),
 	
-	USER_ADDED_SUCCESSFULLY_MESSAGE("User Was Added Successfully"),
-	USER_ADD_FAILED_MESSAGE("User Add Was Failed"),
+	PRESS_HERE_TO_CONTINUE(". Press Here To Continue"),
 	
-	USER_UPDATED_SUCCESSFULLY_MESSAGE("User Was Updated Successfully"),
-	USER_UPDATE_FAILED_MESSAGE("User Update Was Failed"),
+	COMMAND_ERROR_MESSAGE("Command Error Message"),
+	SERVICE_ERROR_MESSAGE("Service Error Message"),
 	
-	USER_DELETED_SUCCESSFULLY_MESSAGE("User Was Deleted Successfully"),
-	USER_DELETE_FAILED_MESSAGE("User Delte Was Failed");
+	USER_ADDED_SUCCESSFULLY_MESSAGE("User Added Successfully Message"),
+	USER_ADD_FAILED_MESSAGE("User Add Failed Message"),
+	
+	USER_UPDATED_SUCCESSFULLY_MESSAGE("User Updated Successfully Message"),
+	USER_UPDATE_FAILED_MESSAGE("User Update Failed Message"),
+	
+	USER_DELETED_SUCCESSFULLY_MESSAGE("User Deleted Successfully Message"),
+	USER_DELETE_FAILED_MESSAGE("User Delete Failed Message");
 	
 	
 	

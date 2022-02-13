@@ -1,17 +1,18 @@
 package by.andersen.intensive.bakulin.controller.command.constant;
 
 public enum CommandParameter {
-	COMMAND_PARAM("commmand"),
+	COMMAND_PARAM("command"),
 	PAGE_PARAMETER("page"),
 	USER_ID_PARAMETER("id"),
 	USERNAME_PARAMETER("username"),
-	FIRSTNAME_PARAMETER("user_firstname"),
-	SECONDNAME_PARAMETER("user_secondname"),
-	LASTNAME_PARAMETER("user_lastname"),
-	AGE_PARAMETER("user_age"),
-	PHONE_PARAMETER("user_phone"),
-	USER_EMAIL_PARAMETER("user_email"),
-	USER_ROLE_PARAMETER("user_role");
+	OLD_USERNAME_PARAMETER("old_username"),
+	FIRSTNAME_PARAMETER("firstName"),
+	SECONDNAME_PARAMETER("secondName"),
+	LASTNAME_PARAMETER("lastName"),
+	AGE_PARAMETER("age"),
+	PHONE_PARAMETER("phoneNumber"),
+	USER_EMAIL_PARAMETER("email"),
+	USER_ROLE_PARAMETER("role");
 	
 	String parameterName;
 	

@@ -81,13 +81,13 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public boolean updateUser(String userName, String firstName, String secondName, String lastName, int age,
+	public boolean updateUser(String oldUserName, String userName, String firstName, String secondName, String lastName, int age,
 			String phoneNumber, String emailAddress, String userRole) throws ServiceException {
 		boolean result = false;
 		User userToUpdate = null;
 		try (ConnectionManager connectionManager = new ConnectionManager()) {
 			IUserDAO userDAO = new SqlUserDAO(connectionManager.getConnection());
-			userToUpdate = userDAO.findByUserName(userName);
+			userToUpdate = userDAO.findByUserName(oldUserName);
 			userToUpdate.setUserName(userName);
 			userToUpdate.setFirstName(firstName);
 			userToUpdate.setSecondName(secondName);
@@ -126,16 +126,16 @@ public class UserService implements IUserService {
 		if (page < totalPages) {
 			if (page == 1) {
 				for (int record = 0; record < recordsPerPage; record++) {
-					User person = allUsers.get(record);
-					result.add(person);
+					User user = allUsers.get(record);
+					result.add(user);
 					++recordCounter;
 				}
 			}
 			if (page > 1) {
 				recordCounter = recordsPerPage * (page - 1);
 				for (int record = recordCounter; record < page * recordsPerPage; record++) {
-					User person = allUsers.get(record);
-					result.add(person);
+					User user = allUsers.get(record);
+					result.add(user);
 					++recordCounter;
 				}
 			}
@@ -143,8 +143,8 @@ public class UserService implements IUserService {
 		if (page == totalPages) {
 			recordCounter = recordsPerPage * (page - 1);
 			for (int record = recordCounter; record < allRecords; record++) {
-				User person = allUsers.get(record);
-				result.add(person);
+				User user = allUsers.get(record);
+				result.add(user);
 				++recordCounter;
 			}
 		}

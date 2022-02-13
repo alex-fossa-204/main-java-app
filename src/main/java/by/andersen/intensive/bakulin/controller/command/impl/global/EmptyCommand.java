@@ -14,4 +14,11 @@ public class EmptyCommand implements Command{
 		return new Page(INDEX_PAGE_PATH.getPagePath(), false);
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("EmptyCommand []");
+		return builder.toString();
+	}
+	
 }

@@ -1,0 +1,109 @@
+@charset "UTF-8";
+@import 'https://use.fontawesome.com/releases/v5.8.1/css/all.css';
+
+.grid-icon {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.doge {
+	width: 40%;
+	height: 40%;
+	border-radius: 25px;
+}
+
+.doge-bg {
+	background: linear-gradient(45deg, rgb(129, 98, 37), rgb(236, 199, 89));
+}
+
+.doge-bg-card {
+	background: linear-gradient(0deg, rgb(73, 51, 37), rgb(205, 175, 90));
+}
+a {
+	color: white !important;
+}
+
+a:hover {
+	color: #c17d11 !important;
+}
+
+.message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pagination {
+	width: 100%;
+	margin: 0;
+	padding: 25px;
+	color: #111;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+button {
+	background: none;
+	appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	-moz-appearance: none;
+	border: none;
+	cursor: pointer;
+}
+
+.page-btn {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	background: #2e3436;
+	color: #fff;
+	height: 40px;
+	border-radius: 2px;
+	padding: 0 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	transition: background 0.3s ease;
+	margin: 0 2px
+}
+
+.page-btn:first-of-type {
+	margin-left: 0;
+}
+
+.page-btn:last-of-type {
+	margin-right: 0;
+}
+
+.page-btn:not([class$="-page"]) {
+	width: 70px;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.pagination-buttons {
+	display: flex;
+	justify-content:space-between;
+	align-items: center;
+	flex-direction: row;
+}
+
+.page-btn[class*="-page"] {
+	background: #ccc;
+	font-size: 0.6em;
+	font-weight: 700;
+}
+
+.page-btn.active {
+	background: #ce5c00;
+	color: #fff;
+}
+
+.page-btn[disabled] {
+	opacity: 0.3;
+}
+

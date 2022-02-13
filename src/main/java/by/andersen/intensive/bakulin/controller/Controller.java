@@ -19,7 +19,7 @@ import static by.andersen.intensive.bakulin.controller.command.constant.CommandA
 public class Controller extends HttpServlet {
 
 	private static final long serialVersionUID = -2502761567261800362L;
-
+	
 	@Override
 	protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
 		processRequest(httpServletRequest, httpServletResponse);
@@ -52,9 +52,9 @@ public class Controller extends HttpServlet {
 	
 	private void forward(Page page, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
 		String url = page.getPageUrl();
-		String pageMessage = page.getMessage();
-		if(!NONE_MESSAGE.getMessage().equals(pageMessage)) {
-			String message = MessageEnum.valueOf(pageMessage).getMessage();
+		String pageMessage = page.getMessage().replaceAll(" ", "_").toUpperCase();
+		if(!NONE_MESSAGE.getMessage().equalsIgnoreCase(pageMessage)) {
+			String message = MessageEnum.valueOf(pageMessage).getMessage().replace(MessageEnum._MESSAGE.getMessage(), "").concat(MessageEnum.PRESS_HERE_TO_CONTINUE.getMessage());
 			httpServletRequest.setAttribute(MESSAGE_ATTRIBUTE.getAttributeName(), message);
 		}
 		RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher(url);

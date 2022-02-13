@@ -82,11 +82,15 @@ public class ServiceTest {
 	@Test
 	public void testServiceFindAllUsersPageable() {
 		System.out.println("Service Find All Users Pageable:");
+		int pageNum = 2;
+		int recordsPerPage = 5;
+		int recordsQuantity = 0;
 		
 		IUserService userService = new UserService();
 		List<User> users = null;
 		try {
-			users = userService.getAllUsersPageable(1, 2, 1);
+			recordsQuantity = userService.getUsersQuanity();
+			users = userService.getAllUsersPageable(pageNum, recordsPerPage, recordsQuantity);
 		} catch (ServiceException e) {
 			System.err.println(e.getMessage());
 		}

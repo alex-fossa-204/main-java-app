@@ -32,7 +32,7 @@ public class SqlUserDAO extends SqlAbstractDAO<User> implements IUserDAO {
 	private static final String USER_ROLE_COL_LABEL = "user_role";
 	
 	
-	private static final String SELECT_ALL_USERS_QUERY = "SELECT * FROM users";
+	private static final String SELECT_ALL_USERS_QUERY = "SELECT * FROM users ORDER BY id ASC";
 		
 	private static final String SELECT_USERS_BY_ID_QUERY = "SELECT * FROM users WHERE id=?";
 	

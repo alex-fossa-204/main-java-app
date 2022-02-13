@@ -18,19 +18,19 @@ public class UpdateUserCommand implements Command{
 	public Page execute(HttpServletRequest httpServletRequest) {
 		Page resultPage = null;
 		boolean isUpdateSuccessfull = false;
-		
+		String oldUserName = httpServletRequest.getParameter(OLD_USERNAME_PARAMETER.getParameterName());
 		String username = httpServletRequest.getParameter(USERNAME_PARAMETER.getParameterName());
 		String firstName = httpServletRequest.getParameter(FIRSTNAME_PARAMETER.getParameterName());
 		String secondName = httpServletRequest.getParameter(SECONDNAME_PARAMETER.getParameterName());
 		String lastName = httpServletRequest.getParameter(LASTNAME_PARAMETER.getParameterName());
 		int age = Integer.valueOf(httpServletRequest.getParameter(AGE_PARAMETER.getParameterName()));
-		String phoneNumber = httpServletRequest.getParameter(USERNAME_PARAMETER.getParameterName());
+		String phoneNumber = httpServletRequest.getParameter(PHONE_PARAMETER.getParameterName());
 		String emailAddress = httpServletRequest.getParameter(USER_EMAIL_PARAMETER.getParameterName());
 		String role = httpServletRequest.getParameter(USER_ROLE_PARAMETER.getParameterName());
 		
 		IUserService userService = new UserService();
 		try {
-			isUpdateSuccessfull = userService.updateUser(username, firstName, secondName, lastName, age, phoneNumber, emailAddress, role);
+			isUpdateSuccessfull = userService.updateUser(oldUserName, username, firstName, secondName, lastName, age, phoneNumber, emailAddress, role);
 			if(isUpdateSuccessfull) {
 				resultPage = new Page(USERS_PAGE_PATH.getPagePath(), false, USER_UPDATED_SUCCESSFULLY_MESSAGE.getMessage());
 			}
@@ -42,5 +42,14 @@ public class UpdateUserCommand implements Command{
 		}
 		return resultPage;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("UpdateUserCommand []");
+		return builder.toString();
+	}
+	
+	
 
 }
