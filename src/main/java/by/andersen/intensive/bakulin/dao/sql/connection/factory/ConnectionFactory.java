@@ -20,7 +20,6 @@ public class ConnectionFactory {
 	public static Connection newInstance() {
 		Connection connection = null;
 		registerConnectionDriver();
-		//String dbUrl = ConnectionConstant.RESOURCE_BUNDLE.getString(ConnectionConstant.DATABASE_URL_BUNDLE_KEY);
 		try {
 			connection = DriverManager.getConnection(ConnectionConstant.DATABASE_URL_BUNDLE_KEY, ConnectionPropertiesFactory.newInstance());
 		} catch (SQLException e) {
