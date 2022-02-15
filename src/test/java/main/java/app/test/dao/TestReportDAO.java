@@ -2,6 +2,7 @@ package main.java.app.test.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.FixMethodOrder;
@@ -42,11 +43,12 @@ public class TestReportDAO {
 	@Test
 	public void testFindUserReportsAll() {
 		String username = "dogeadmin16";
+		String date = "2022-02-15";
 		try (Connection connection = connectionManager.getConnection()) {
 			IReportDAO reportDao = new SqlReportDAO(connection);
 			List<Report> reports = null;
 			try {
-				reports = reportDao.findUserReportsAll(username);
+				reports = reportDao.findUserReportsAllByDate(username, date);
 			} catch (DAOException e) {
 				System.err.println(e.getMessage());
 			}

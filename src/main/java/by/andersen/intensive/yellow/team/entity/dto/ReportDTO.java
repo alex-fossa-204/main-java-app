@@ -12,15 +12,12 @@ public class ReportDTO implements Serializable{
 	
 	private String reportBody;
 	
-	private Date reportDate;
-	
 	private int laborCost;
 
-	public ReportDTO(String reportTitle, String reportBody, Date reportDate, int laborCost) {
+	public ReportDTO(String reportTitle, String reportBody, int laborCost) {
 		super();
 		this.reportTitle = reportTitle;
 		this.reportBody = reportBody;
-		this.reportDate = reportDate;
 		this.laborCost = laborCost;
 	}
 
@@ -44,14 +41,6 @@ public class ReportDTO implements Serializable{
 		this.reportBody = reportBody;
 	}
 
-	public Date getReportDate() {
-		return reportDate;
-	}
-
-	public void setReportDate(Date reportDate) {
-		this.reportDate = reportDate;
-	}
-
 	public int getLaborCost() {
 		return laborCost;
 	}
@@ -62,7 +51,7 @@ public class ReportDTO implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(laborCost, reportBody, reportDate, reportTitle);
+		return Objects.hash(laborCost, reportBody, reportTitle);
 	}
 
 	@Override
@@ -75,7 +64,7 @@ public class ReportDTO implements Serializable{
 			return false;
 		ReportDTO other = (ReportDTO) obj;
 		return laborCost == other.laborCost && Objects.equals(reportBody, other.reportBody)
-				&& Objects.equals(reportDate, other.reportDate) && Objects.equals(reportTitle, other.reportTitle);
+				&& Objects.equals(reportTitle, other.reportTitle);
 	}
 
 	@Override
@@ -85,14 +74,12 @@ public class ReportDTO implements Serializable{
 		builder.append(reportTitle);
 		builder.append(", reportBody=");
 		builder.append(reportBody);
-		builder.append(", reportDate=");
-		builder.append(reportDate);
 		builder.append(", laborCost=");
 		builder.append(laborCost);
 		builder.append("]");
 		return builder.toString();
 	}
-	
+
 }
 
 

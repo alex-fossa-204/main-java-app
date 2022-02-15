@@ -36,7 +36,7 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 	private static final String SAVE_USER_REPORT_QUERY = "INSERT INTO reports (title, body, reported_by, labor_costs) VALUES (?, ?, ?, ?)";
 	private static final String DELETE_REPORT_BY_ID_QUERY = "DELETE FROM reports WHERE id=?";
 	private static final String UPDATE_REPORT_QUERY = "UPDATE reports SET title=?, reported_by=?, labor_costs=? WHERE id = ?";
-	private static final String ORDER_BY_QUERY = "ORDER BY date ASC";
+	private static final String AND_DATE_SELECTION_QUERY = "AND reports.date =";
 	
 	public SqlReportDAO(Connection connection) {
 		super(connection);
@@ -58,11 +58,11 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 	}
 	
 	@Override
-	public List<Report> findUserReportsAll(String username) throws DAOException {
+	public List<Report> findUserReportsAllByDate(String username, String date) throws DAOException {
 		List<Report> entitiesList = new ArrayList<Report>();
 		
 		try (Statement statement = connection.createStatement()) {
-			String sqlQuery = String.format("%s '%s' %s", SELECT_USER_REPORTS_QUERY, username, ORDER_BY_QUERY);
+			String sqlQuery = String.format("%s '%s' %s '%s'", SELECT_USER_REPORTS_QUERY, username, AND_DATE_SELECTION_QUERY, date);
 			ResultSet resultSet = statement.executeQuery(sqlQuery);
 			while (resultSet.next()) {
 				Report entity = buildEntity(resultSet);
@@ -117,7 +117,7 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 			String body = resultSet.getString(BODY_COL_LABEL);
 			report.setReportBody(body);
 			
-			Date date = (Date)resultSet.getTimestamp(DATE_COL_LABEL);
+			Date date = (Date)resultSet.getDate(DATE_COL_LABEL);
 			report.setReportDate(date);
 			
 			String userDtoFirstName = resultSet.getString(USER_DTO_FIRSTNAME_COL_LABEL);

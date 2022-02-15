@@ -6,7 +6,7 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>Controller</servlet-name>
-    <servlet-class>by.andersen.intensive.bakulin.controller.Controller</servlet-class>
+    <servlet-class>by.andersen.intensive.yellow.team.controller.Controller</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Controller</servlet-name>
