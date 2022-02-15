@@ -9,7 +9,7 @@ import by.andersen.intensive.yellow.team.service.IUserService;
 import by.andersen.intensive.yellow.team.service.exception.ServiceException;
 import by.andersen.intensive.yellow.team.service.impl.UserService;
 
-public class ServiceTest {
+public class UserServiceTest {
 	
 	String username = "bigWolf13";
 	
