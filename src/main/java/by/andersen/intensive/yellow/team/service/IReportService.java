@@ -18,7 +18,9 @@ public interface IReportService {
 	
 	boolean deleteUserReport(long reportId) throws ServiceException;
 	
-	Map<UserDTO, List<ReportDTO>> getAllUsersReportsMapByDate(String date) throws ServiceException;
+	Map<UserDTO, List<ReportDTO>> getAllUsersReportsDtoMapByDate(String date) throws ServiceException;
+	
+	List<Report> getAllReportsForSingleUser(String username) throws ServiceException;
 	
 	Report getReportByTitle(String reportTitle) throws ServiceException;
 }

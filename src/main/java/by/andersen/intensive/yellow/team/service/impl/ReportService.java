@@ -78,7 +78,7 @@ public class ReportService implements IReportService {
 	}
 
 	@Override
-	public Map<UserDTO, List<ReportDTO>> getAllUsersReportsMapByDate(String date) throws ServiceException {
+	public Map<UserDTO, List<ReportDTO>> getAllUsersReportsDtoMapByDate(String date) throws ServiceException {
 		Map<UserDTO, List<ReportDTO>> usersReports = new HashMap<UserDTO, List<ReportDTO>>();
 
 		try (ConnectionManager connectionManager = new ConnectionManager()) {
@@ -87,7 +87,7 @@ public class ReportService implements IReportService {
 
 			List<User> users = userDao.findAll();
 			for (User user : users) {
-				List<Report> currentUserReports = reportDao.findUserReportsAllByDate(user.getUserName(), date);
+				List<Report> currentUserReports = reportDao.findUserReportsByDate(user.getUserName(), date);
 				UserDTO currentUserDTO = convertUserToDTO(user);
 				usersReports.put(currentUserDTO, convertUserReportListToDTO(currentUserReports));
 			}
@@ -112,6 +112,22 @@ public class ReportService implements IReportService {
 			throw new ServiceException(exception.getMessage(), exception);
 		}
 		return resultReport;
+	}
+	
+	
+
+	@Override
+	public List<Report> getAllReportsForSingleUser(String username) throws ServiceException {
+		List<Report> currentUserReports = null;
+		try (ConnectionManager connectionManager = new ConnectionManager()) {
+			IReportDAO reportDao = new SqlReportDAO(connectionManager.getConnection());
+			currentUserReports = reportDao.findUserReports(username);
+		} catch (DAOException daoException) {
+			throw new ServiceException(daoException.getMessage(), daoException);
+		} catch (Exception exception) {
+			throw new ServiceException(exception.getMessage(), exception);
+		}
+		return currentUserReports;
 	}
 
 	private List<ReportDTO> convertUserReportListToDTO(List<Report> reportList) {

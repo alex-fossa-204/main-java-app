@@ -48,7 +48,7 @@ public class TestReportDAO {
 			IReportDAO reportDao = new SqlReportDAO(connection);
 			List<Report> reports = null;
 			try {
-				reports = reportDao.findUserReportsAllByDate(username, date);
+				reports = reportDao.findUserReportsByDate(username, date);
 			} catch (DAOException e) {
 				System.err.println(e.getMessage());
 			}

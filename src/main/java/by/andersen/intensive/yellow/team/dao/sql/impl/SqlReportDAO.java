@@ -58,7 +58,7 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 	}
 	
 	@Override
-	public List<Report> findUserReportsAllByDate(String username, String date) throws DAOException {
+	public List<Report> findUserReportsByDate(String username, String date) throws DAOException {
 		List<Report> entitiesList = new ArrayList<Report>();
 		
 		try (Statement statement = connection.createStatement()) {
@@ -74,6 +74,23 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 		return entitiesList;
 	}
 	
+	@Override
+	public List<Report> findUserReports(String username) throws DAOException {
+		List<Report> entitiesList = new ArrayList<Report>();
+		
+		try (Statement statement = connection.createStatement()) {
+			String sqlQuery = String.format("%s '%s'", SELECT_USER_REPORTS_QUERY, username);
+			ResultSet resultSet = statement.executeQuery(sqlQuery);
+			while (resultSet.next()) {
+				Report entity = buildEntity(resultSet);
+				entitiesList.add(entity);
+			}
+		} catch (SQLException sqlException) {
+			throw new DAOException(sqlException.getMessage(), sqlException);
+		}
+		return entitiesList;
+	}
+
 	@Override
 	public Map<String, String> initializeBaseQueries() {
 		Map<String, String> baseQueries = new HashMap<String, String>();
