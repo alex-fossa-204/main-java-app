@@ -108,7 +108,7 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 		Report report = new Report();
 		try {
 			
-			Integer reportId = resultSet.getInt(ID_COL_LABEL);
+			Long reportId = resultSet.getLong(ID_COL_LABEL);
 			report.setId(reportId);
 			
 			String title = resultSet.getString(TITLE_COL_LABEL);

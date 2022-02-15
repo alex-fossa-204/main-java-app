@@ -17,7 +17,7 @@ public class Report extends Entity implements Serializable {
 	
 	private Date reportDate;
 	
-	private UserDTO reportedBy;
+	private UserDTO reportedByUser;
 	
 	private long reporterId;
 	
@@ -28,7 +28,7 @@ public class Report extends Entity implements Serializable {
 		this.reportTitle = reportTitle;
 		this.reportBody = reportBody;
 		this.reportDate = reportDate;
-		this.reportedBy = reportedBy;
+		this.reportedByUser = reportedBy;
 		this.laborCost = laborCost;
 	}
 	
@@ -69,11 +69,11 @@ public class Report extends Entity implements Serializable {
 	}
 
 	public UserDTO getReportedBy() {
-		return reportedBy;
+		return reportedByUser;
 	}
 
 	public void setReportedBy(UserDTO reportedBy) {
-		this.reportedBy = reportedBy;
+		this.reportedByUser = reportedBy;
 	}
 	
 	public long getReporterId() {
@@ -96,7 +96,7 @@ public class Report extends Entity implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(laborCost, reportBody, reportDate, reportTitle, reportedBy);
+		result = prime * result + Objects.hash(laborCost, reportBody, reportDate, reportTitle, reportedByUser);
 		return result;
 	}
 
@@ -111,7 +111,7 @@ public class Report extends Entity implements Serializable {
 		Report other = (Report) obj;
 		return laborCost == other.laborCost && Objects.equals(reportBody, other.reportBody)
 				&& Objects.equals(reportDate, other.reportDate) && Objects.equals(reportTitle, other.reportTitle)
-				&& Objects.equals(reportedBy, other.reportedBy);
+				&& Objects.equals(reportedByUser, other.reportedByUser);
 	}
 
 	@Override
@@ -124,7 +124,7 @@ public class Report extends Entity implements Serializable {
 		builder.append(", reportDate=");
 		builder.append(reportDate);
 		builder.append(", reportedBy=");
-		builder.append(reportedBy);
+		builder.append(reportedByUser);
 		builder.append(", laborCost=");
 		builder.append(laborCost);
 		builder.append("]");
