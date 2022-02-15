@@ -13,8 +13,8 @@ import java.util.Map;
 
 import by.andersen.intensive.yellow.team.dao.IReportDAO;
 import by.andersen.intensive.yellow.team.dao.exception.DAOException;
-import by.andersen.intensive.yellow.team.entity.Report;
 import by.andersen.intensive.yellow.team.entity.dto.UserDTO;
+import by.andersen.intensive.yellow.team.entity.impl.Report;
 
 public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 	

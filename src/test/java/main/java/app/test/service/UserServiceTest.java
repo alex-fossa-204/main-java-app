@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import by.andersen.intensive.yellow.team.entity.User;
+import by.andersen.intensive.yellow.team.entity.impl.User;
 import by.andersen.intensive.yellow.team.service.IUserService;
 import by.andersen.intensive.yellow.team.service.exception.ServiceException;
 import by.andersen.intensive.yellow.team.service.impl.UserService;

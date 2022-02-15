@@ -1,4 +1,4 @@
-package by.andersen.intensive.yellow.team.entity.impl;
+package by.andersen.intensive.yellow.team.entity;
 
 import java.io.Serializable;
 import java.util.Objects;

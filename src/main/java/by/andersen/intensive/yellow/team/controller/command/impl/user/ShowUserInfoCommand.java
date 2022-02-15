@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import by.andersen.intensive.yellow.team.controller.command.Command;
 import by.andersen.intensive.yellow.team.controller.page.Page;
-import by.andersen.intensive.yellow.team.entity.User;
+import by.andersen.intensive.yellow.team.entity.impl.User;
 import by.andersen.intensive.yellow.team.service.IUserService;
 import by.andersen.intensive.yellow.team.service.exception.ServiceException;
 import by.andersen.intensive.yellow.team.service.impl.UserService;

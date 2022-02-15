@@ -12,7 +12,7 @@ import by.andersen.intensive.yellow.team.dao.IReportDAO;
 import by.andersen.intensive.yellow.team.dao.exception.DAOException;
 import by.andersen.intensive.yellow.team.dao.sql.connection.manager.ConnectionManager;
 import by.andersen.intensive.yellow.team.dao.sql.impl.SqlReportDAO;
-import by.andersen.intensive.yellow.team.entity.Report;
+import by.andersen.intensive.yellow.team.entity.impl.Report;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestReportDAO {

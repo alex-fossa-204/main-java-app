@@ -1,9 +1,9 @@
-package by.andersen.intensive.yellow.team.entity;
+package by.andersen.intensive.yellow.team.entity.impl;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-import by.andersen.intensive.yellow.team.entity.impl.Entity;
+import by.andersen.intensive.yellow.team.entity.Entity;
 
 public class User extends Entity implements Serializable {
 

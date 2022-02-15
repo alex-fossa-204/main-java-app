@@ -11,7 +11,7 @@ import java.util.Map;
 
 import by.andersen.intensive.yellow.team.dao.IUserDAO;
 import by.andersen.intensive.yellow.team.dao.exception.DAOException;
-import by.andersen.intensive.yellow.team.entity.User;
+import by.andersen.intensive.yellow.team.entity.impl.User;
 
 public class SqlUserDAO extends SqlAbstractDAO<User> implements IUserDAO {
 	

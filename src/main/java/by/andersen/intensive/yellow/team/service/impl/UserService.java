@@ -7,8 +7,8 @@ import by.andersen.intensive.yellow.team.dao.IUserDAO;
 import by.andersen.intensive.yellow.team.dao.exception.DAOException;
 import by.andersen.intensive.yellow.team.dao.sql.connection.manager.ConnectionManager;
 import by.andersen.intensive.yellow.team.dao.sql.impl.SqlUserDAO;
-import by.andersen.intensive.yellow.team.entity.RoleEnum;
-import by.andersen.intensive.yellow.team.entity.User;
+import by.andersen.intensive.yellow.team.entity.impl.RoleEnum;
+import by.andersen.intensive.yellow.team.entity.impl.User;
 import by.andersen.intensive.yellow.team.service.IUserService;
 import by.andersen.intensive.yellow.team.service.exception.ServiceException;
 

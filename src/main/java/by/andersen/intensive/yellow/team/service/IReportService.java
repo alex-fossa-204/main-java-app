@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import by.andersen.intensive.yellow.team.entity.Report;
-import by.andersen.intensive.yellow.team.entity.User;
 import by.andersen.intensive.yellow.team.entity.dto.ReportDTO;
+import by.andersen.intensive.yellow.team.entity.impl.Report;
+import by.andersen.intensive.yellow.team.entity.impl.User;
 import by.andersen.intensive.yellow.team.service.exception.ServiceException;
 
 public interface IReportService {

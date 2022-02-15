@@ -7,8 +7,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import by.andersen.intensive.yellow.team.entity.User;
 import by.andersen.intensive.yellow.team.entity.dto.ReportDTO;
+import by.andersen.intensive.yellow.team.entity.impl.User;
 import by.andersen.intensive.yellow.team.service.IReportService;
 import by.andersen.intensive.yellow.team.service.exception.ServiceException;
 import by.andersen.intensive.yellow.team.service.impl.ReportService;

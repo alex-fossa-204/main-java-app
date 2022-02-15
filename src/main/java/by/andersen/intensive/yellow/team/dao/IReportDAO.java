@@ -3,7 +3,7 @@ package by.andersen.intensive.yellow.team.dao;
 import java.util.List;
 
 import by.andersen.intensive.yellow.team.dao.exception.DAOException;
-import by.andersen.intensive.yellow.team.entity.Report;
+import by.andersen.intensive.yellow.team.entity.impl.Report;
 
 public interface IReportDAO extends DAO<Report> {
 	

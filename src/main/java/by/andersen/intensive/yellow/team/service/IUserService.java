@@ -2,7 +2,7 @@ package by.andersen.intensive.yellow.team.service;
 
 import java.util.List;
 
-import by.andersen.intensive.yellow.team.entity.User;
+import by.andersen.intensive.yellow.team.entity.impl.User;
 import by.andersen.intensive.yellow.team.service.exception.ServiceException;
 
 public interface IUserService {

@@ -1,11 +1,11 @@
-package by.andersen.intensive.yellow.team.entity;
+package by.andersen.intensive.yellow.team.entity.impl;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import by.andersen.intensive.yellow.team.entity.Entity;
 import by.andersen.intensive.yellow.team.entity.dto.UserDTO;
-import by.andersen.intensive.yellow.team.entity.impl.Entity;
 
 public class Report extends Entity implements Serializable {
 	

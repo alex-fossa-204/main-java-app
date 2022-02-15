@@ -7,7 +7,7 @@ import java.util.Map;
 
 import by.andersen.intensive.yellow.team.dao.DAO;
 import by.andersen.intensive.yellow.team.dao.exception.DAOException;
-import by.andersen.intensive.yellow.team.entity.impl.Entity;
+import by.andersen.intensive.yellow.team.entity.Entity;
 
 import java.sql.*;
 
