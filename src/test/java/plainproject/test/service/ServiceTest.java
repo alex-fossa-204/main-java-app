@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import by.andersen.intensive.yellow.entity.User;
-import by.andersen.intensive.yellow.service.IUserService;
-import by.andersen.intensive.yellow.service.exception.ServiceException;
-import by.andersen.intensive.yellow.service.impl.UserService;
+import by.andersen.intensive.yellow.team.entity.User;
+import by.andersen.intensive.yellow.team.service.IUserService;
+import by.andersen.intensive.yellow.team.service.exception.ServiceException;
+import by.andersen.intensive.yellow.team.service.impl.UserService;
 
 public class ServiceTest {
 	

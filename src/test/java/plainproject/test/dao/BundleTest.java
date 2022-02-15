@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 import org.junit.Test;
 
-import by.andersen.intensive.yellow.dao.sql.connection.constant.ConnectionConstant;
+import by.andersen.intensive.yellow.team.dao.sql.connection.constant.ConnectionConstant;
 
 public class BundleTest {
 	
