@@ -8,11 +8,11 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import by.andersen.intensive.bakulin.dao.IReportDAO;
-import by.andersen.intensive.bakulin.dao.exception.DAOException;
-import by.andersen.intensive.bakulin.dao.sql.connection.manager.ConnectionManager;
-import by.andersen.intensive.bakulin.dao.sql.impl.SqlReportDAO;
-import by.andersen.intensive.bakulin.entity.Report;
+import by.andersen.intensive.yellow.dao.IReportDAO;
+import by.andersen.intensive.yellow.dao.exception.DAOException;
+import by.andersen.intensive.yellow.dao.sql.connection.manager.ConnectionManager;
+import by.andersen.intensive.yellow.dao.sql.impl.SqlReportDAO;
+import by.andersen.intensive.yellow.entity.Report;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestReportDAO {

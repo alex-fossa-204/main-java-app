@@ -8,12 +8,12 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import by.andersen.intensive.bakulin.dao.IUserDAO;
-import by.andersen.intensive.bakulin.dao.exception.DAOException;
-import by.andersen.intensive.bakulin.dao.sql.connection.manager.ConnectionManager;
-import by.andersen.intensive.bakulin.dao.sql.impl.SqlUserDAO;
-import by.andersen.intensive.bakulin.entity.RoleEnum;
-import by.andersen.intensive.bakulin.entity.User;
+import by.andersen.intensive.yellow.dao.IUserDAO;
+import by.andersen.intensive.yellow.dao.exception.DAOException;
+import by.andersen.intensive.yellow.dao.sql.connection.manager.ConnectionManager;
+import by.andersen.intensive.yellow.dao.sql.impl.SqlUserDAO;
+import by.andersen.intensive.yellow.entity.RoleEnum;
+import by.andersen.intensive.yellow.entity.User;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestUserDAO {
