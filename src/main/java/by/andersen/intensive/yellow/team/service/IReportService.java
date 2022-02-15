@@ -22,5 +22,9 @@ public interface IReportService {
 	
 	List<Report> getAllReportsForSingleUser(String username) throws ServiceException;
 	
+	List<Report> getAllReportsForSingleUserPageable(String username) throws ServiceException;
+	
 	Report getReportByTitle(String reportTitle) throws ServiceException;
+	
+	int getSingleUserReportsQuantity(String username) throws ServiceException;
 }

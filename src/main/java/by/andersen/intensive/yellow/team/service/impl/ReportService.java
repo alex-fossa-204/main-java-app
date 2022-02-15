@@ -129,6 +129,14 @@ public class ReportService implements IReportService {
 		}
 		return currentUserReports;
 	}
+	
+	
+
+	@Override
+	public List<Report> getAllReportsForSingleUserPageable(String username) throws ServiceException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	private List<ReportDTO> convertUserReportListToDTO(List<Report> reportList) {
 		List<ReportDTO> reportListDto = new ArrayList<ReportDTO>();
@@ -142,5 +150,51 @@ public class ReportService implements IReportService {
 	private UserDTO convertUserToDTO(User user) {
 		return new UserDTO(user.getFirstName(), user.getSecondName(), user.getLastName());
 	}
+	
+	private List<Report> paginateUsers(int page, int recordsPerPage, List<Report> allReports, int totalPages) {
+		List<Report> result = new ArrayList<>();
+		int allRecords = allReports.size();
+		int recordCounter = 0;
+		if (page < totalPages) {
+			if (page == 1) {
+				for (int record = 0; record < recordsPerPage; record++) {
+					Report report = allReports.get(record);
+					result.add(report);
+					++recordCounter;
+				}
+			}
+			if (page > 1) {
+				recordCounter = recordsPerPage * (page - 1);
+				for (int record = recordCounter; record < page * recordsPerPage; record++) {
+					Report report = allReports.get(record);
+					result.add(report);
+					++recordCounter;
+				}
+			}
+		}
+		if (page == totalPages) {
+			recordCounter = recordsPerPage * (page - 1);
+			for (int record = recordCounter; record < allRecords; record++) {
+				Report report = allReports.get(record);
+				result.add(report);
+				++recordCounter;
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public int getSingleUserReportsQuantity(String username) throws ServiceException {
+		int reportsQuantity = 0;
+		try {
+			List<Report> reports = getAllReportsForSingleUser(username);
+			reportsQuantity = reports.size();
+		} catch (ServiceException exception) {
+			throw exception;
+		}
+		return reportsQuantity;
+	}
+	
+	
 
 }
