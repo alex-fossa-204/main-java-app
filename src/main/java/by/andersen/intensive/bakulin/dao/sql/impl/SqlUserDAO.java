@@ -16,32 +16,19 @@ import by.andersen.intensive.bakulin.entity.User;
 public class SqlUserDAO extends SqlAbstractDAO<User> implements IUserDAO {
 	
 	private static final String USER_USERNAME_COL_LABEL = "username";
-	
 	private static final String USER_FIRSTNAME_COL_LABEL = "user_firstname";
-	
 	private static final String USER_SECONDNAME_COL_LABEL = "user_secondname";
-	
 	private static final String USER_LASTNAME_COL_LABEL = "user_lastname";
-	
 	private static final String USER_AGE_COL_LABEL = "user_age";
-	
 	private static final String USER_PHONE_COL_LABEL = "user_phone";
-	
 	private static final String USER_EMAIL_COL_LABEL = "user_email";
-	
 	private static final String USER_ROLE_COL_LABEL = "user_role";
 	
-	
 	private static final String SELECT_ALL_USERS_QUERY = "SELECT * FROM users ORDER BY id ASC";
-		
 	private static final String SELECT_USERS_BY_ID_QUERY = "SELECT * FROM users WHERE id=?";
-	
 	private static final String SELECT_USERS_BY_USERNAME_QUERY = "SELECT * FROM users WHERE username=?";
-	
 	private static final String DELETE_USER_BY_ID_QUERY = "DELETE FROM users WHERE id=?";
-	
 	private static final String INSERT_USER_QUERY = "INSERT INTO users (username, user_firstname, user_secondname, user_lastname, user_age, user_phone, user_email, user_role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
 	private static final String UPDATE_USER_QUERY = "UPDATE users SET username=?, user_firstname=?, user_secondname=?, user_lastname=?, user_age=?, user_phone=?, user_email=?, user_role=? WHERE id = ?";
 	
 	public SqlUserDAO(Connection connection) {
@@ -67,7 +54,7 @@ public class SqlUserDAO extends SqlAbstractDAO<User> implements IUserDAO {
 	public User buildEntity(ResultSet resultSet) throws DAOException {
 		User user = new User();
 		try {
-			int id = resultSet.getInt(ID_COLUMN_LABEL);
+			long id = resultSet.getLong(ID_COLUMN_LABEL);
 			user.setId(id);
 			
 			String userName = resultSet.getString(USER_USERNAME_COL_LABEL);

@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>by.andersen.intensive.bakulin</groupId>
-  <artifactId>plainproject</artifactId>
+  <artifactId>main-java-app</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 

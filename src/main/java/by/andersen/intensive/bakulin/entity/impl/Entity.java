@@ -7,13 +7,13 @@ public class Entity implements Serializable{
 	
 	private static final long serialVersionUID = -7540915769272152082L;
 	
-	private int id;
+	private long id;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

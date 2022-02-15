@@ -25,7 +25,7 @@ public abstract class SqlAbstractDAO<E extends Entity> implements DAO<E> {
 	
 	
 	private final Map<String, String> baseSQLQueries;
-	private Connection connection;
+	protected Connection connection;
 
 	public SqlAbstractDAO(Connection connection) {
 		this.connection = connection;
