@@ -1,4 +1,4 @@
-package plainproject.test.dao;
+package main.java.app.test.dao;
 
 import java.util.Enumeration;
 import java.util.Iterator;

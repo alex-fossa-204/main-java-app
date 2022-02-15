@@ -1,4 +1,4 @@
-package plainproject.test.dao;
+package main.java.app.test.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package plainproject.test.service;
+package main.java.app.test.service;
 
 import java.util.List;
 

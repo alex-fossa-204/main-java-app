@@ -1,4 +1,4 @@
-package plainproject.test.service;
+package main.java.app.test.service;
 
 import java.util.List;
 import java.util.Map;
@@ -22,7 +22,12 @@ public class ReportServiceTest {
 		try {
 			Map<User, List<ReportDTO>> usersReports = reportService.getAllUsersReportsMap();
 			for(Map.Entry<User, List<ReportDTO>> entry : usersReports.entrySet()) {
-				System.out.println(String.format("Key User: %s;\nValue List<Report>: %s\n", entry.getKey(), entry.getValue()));
+				System.out.println("Key: " + entry.getKey());
+				System.out.println("Value (reports array):");
+				for (ReportDTO report : entry.getValue()) {
+					System.out.println(" " + report);
+				}
+				System.out.println("\n");
 			}
 		} catch (ServiceException e) {
 			System.err.println(e.getMessage());
