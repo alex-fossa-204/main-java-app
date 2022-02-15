@@ -1,10 +1,13 @@
 package by.andersen.intensive.yellow.team.entity.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class ReportDTO {
+public class ReportDTO implements Serializable{
 	
+	private static final long serialVersionUID = -142110737104972685L;
+
 	private String reportTitle;
 	
 	private String reportBody;
@@ -90,6 +93,9 @@ public class ReportDTO {
 		return builder.toString();
 	}
 	
-	
-
 }
+
+
+
+
+

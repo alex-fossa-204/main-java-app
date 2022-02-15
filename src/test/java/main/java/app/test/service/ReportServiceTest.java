@@ -33,4 +33,9 @@ public class ReportServiceTest {
 			System.err.println(e.getMessage());
 		}
 	}
+	
+	@Test
+	public void updateUserReport() {
+		
+	}
 }
