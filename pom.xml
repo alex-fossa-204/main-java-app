@@ -9,7 +9,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>plainproject Maven Webapp</name>
+  <name>Main java App Maven Webapp</name>
   <url>http://www.example.com</url>
 
   <properties>
@@ -44,7 +44,7 @@
   </dependencies>
 
   <build>
-    <finalName>plainproject</finalName>
+    <finalName>main-java-app</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
