@@ -16,7 +16,6 @@ import by.andersen.intensive.yellow.team.entity.Report;
 import by.andersen.intensive.yellow.team.entity.User;
 import by.andersen.intensive.yellow.team.entity.dto.ReportDTO;
 import by.andersen.intensive.yellow.team.service.IReportService;
-import by.andersen.intensive.yellow.team.service.IUserService;
 import by.andersen.intensive.yellow.team.service.exception.ServiceException;
 
 public class ReportService implements IReportService {
@@ -39,7 +38,7 @@ public class ReportService implements IReportService {
 	}
 
 	@Override
-	public Map<User, List<ReportDTO>> getAllUsersReporstMap() throws ServiceException {
+	public Map<User, List<ReportDTO>> getAllUsersReportsMap() throws ServiceException {
 		Map<User, List<ReportDTO>> usersReports = new HashMap<User, List<ReportDTO>>();
 		IReportDAO reportDao = null;
 		IUserDAO userDao = null;
@@ -49,11 +48,11 @@ public class ReportService implements IReportService {
 			userDao = new SqlUserDAO(connectionManager.getConnection());
 			
 			List<User> users = userDao.findAll();
-			
 			for(User user : users) {
 				List<Report> currentUserReports = reportDao.findUserReportsAll(user.getUserName());
-				usersReports.put(user, convertReportListToDTO(currentUserReports));
+				usersReports.put(user, convertUserReportListToDTO(currentUserReports));
 			}
+			
 		} catch (DAOException daoException) {
 			throw new ServiceException(daoException.getMessage(), daoException);
 		} catch (Exception exception) {
@@ -62,7 +61,7 @@ public class ReportService implements IReportService {
 		return usersReports;
 	}
 	
-	private List<ReportDTO> convertReportListToDTO(List<Report> reportList) {
+	private List<ReportDTO> convertUserReportListToDTO(List<Report> reportList) {
 		List<ReportDTO> reportListDto = new ArrayList<ReportDTO>();
 		for(Report report : reportList) {
 			ReportDTO reportDto = new ReportDTO(report.getReportTitle(), report.getReportBody(), report.getReportDate(), report.getLaborCost());

@@ -20,7 +20,7 @@ public class ReportServiceTest {
 	public void testGetAllUsersReports() {
 		IReportService reportService = new ReportService();
 		try {
-			Map<User, List<ReportDTO>> usersReports = reportService.getAllUsersReporstMap();
+			Map<User, List<ReportDTO>> usersReports = reportService.getAllUsersReportsMap();
 			for(Map.Entry<User, List<ReportDTO>> entry : usersReports.entrySet()) {
 				System.out.println(String.format("Key User: %s;\nValue List<Report>: %s\n", entry.getKey(), entry.getValue()));
 			}

@@ -17,5 +17,5 @@ public interface IReportService {
 	
 	boolean deleteUserReport(long reportId) throws ServiceException;
 	
-	Map<User, List<ReportDTO>> getAllUsersReporstMap() throws ServiceException;
+	Map<User, List<ReportDTO>> getAllUsersReportsMap() throws ServiceException;
 }
