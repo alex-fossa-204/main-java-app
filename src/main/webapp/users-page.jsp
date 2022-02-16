@@ -75,9 +75,11 @@
     		</c:forEach>		    						    						  						
   			</tbody>
 		</table>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
-			<div class="pagination" id="pagination"></div>
-		</nav>
+		<c:if test="${numberOfPages > 1}">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+				<div class="pagination" id="pagination"></div>
+			</nav>
+		</c:if>
   		<footer id="sticky-footer" class="flex-shrink-0 py-5 bg-dark text-white-50 fixed-bottom">
     		<div class="container text-center">
       		<small>Developer &copy; Doge programmer</small>

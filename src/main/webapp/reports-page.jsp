@@ -26,13 +26,16 @@
                 	<ul class="navbar-nav ms-auto">
                 		<c:if test="${numberOfPages >= 1}">
                 			<li class="nav-item mx-4">
-                				<button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#addUserModal">Add New Report<i class="fa fa-users"></i></button>
+                				<button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#addReportModal">Add New Report<i class="fa fa-users"></i></button>
                     		</li>
                 		</c:if>
                     	<li class="nav-item">
+                    		<a href="apply?command=get_all_users&page=1" class="nav-link">
+            					<h2>Dashboard <i class="fa fa-cogs"></i></h2>
+            				</a>
                     	</li>
                     	<li class="nav-item">
-                        	<a href="apply?command=empty_command" class="nav-link"><h3>Back to main<i class="fas fa-sign-out-alt grid-icon"></i></h3></a>
+                        	<a href="apply?command=empty_command" class="nav-link"><h2>Back to main<i class="fas fa-sign-out-alt grid-icon"></i></h2></a>
                     	</li>
                 	</ul>
             	</div>
@@ -44,13 +47,13 @@
     				You don't have any reports. Press Here to add.
     			</a>
     		</h2>
-    		<h2 class="my-5">
+    		<h2>
     			<a href="apply?command=get_all_users&page=1" class="nav-link text-white message">
     				Back to Dashboard
     			</a> 
     		</h2>
   		</c:if>
-  		<!-- <c:if test="${numberOfPages > 0}"> -->
+  		<c:if test="${list.size() > 0}">
     	<table class="table table-hover table-dark mb-0 p-3">
   			<thead>
      			<tr>
@@ -72,7 +75,7 @@
       					<a class="btn btn-warning" href='apply?command=show_edit_report_form&username=<c:out value="${currentUserName}"/>&reportId=<c:out value="${report.id}"/>'>Update</a>
       				</td>
       				<td scope="col" class="py-3">
-      					<form method="POST" action="apply?command=delete_report&id=<c:out value='${user.id}'/>">
+      					<form method="POST" action="apply?command=delete_report&reportId=<c:out value='${report.id}'/>">
       						<button type="submit" class="btn btn-danger">Delete</button>
       					</form>
       				</td>
@@ -80,10 +83,12 @@
     		</c:forEach>		    						    						  						
   			</tbody>
 		</table>
-		<!--</c:if>-->
+		</c:if>
+		<c:if test="${numberOfPages > 1}">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
 			<div class="pagination" id="pagination"></div>
 		</nav>
+		</c:if>
   		<footer id="sticky-footer" class="flex-shrink-0 py-5 bg-dark text-white-50 fixed-bottom">
     		<div class="container text-center">
       		<small>Developer &copy; Doge programmer</small>
