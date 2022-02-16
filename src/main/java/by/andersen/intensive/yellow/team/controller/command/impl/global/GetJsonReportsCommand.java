@@ -5,6 +5,7 @@ import static by.andersen.intensive.yellow.team.controller.command.constant.Comm
 import static by.andersen.intensive.yellow.team.controller.command.constant.MessageEnum.*;
 import static by.andersen.intensive.yellow.team.controller.page.constant.PageEnum.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -26,11 +27,10 @@ public class GetJsonReportsCommand implements Command {
 	@Override
 	public Page execute(HttpServletRequest httpServletRequest) {
 		Page resultPage = null;
-		String jsonReportDate = httpServletRequest.getParameter(JSON_REPORT_DATE.getParameterName());
-		System.out.println(jsonReportDate);
+		LocalDate currentdate = LocalDate.now();
 		IReportService reportService = new ReportService();
 		try {
-			Map<UserDTO, List<ReportDTO>> map = reportService.getAllUsersReportsDtoMapByDate(jsonReportDate);
+			Map<UserDTO, List<ReportDTO>> map = reportService.getAllUsersReportsDtoMapByDate(currentdate.toString());
 			System.out.println(map.toString());
 			Gson gsonParser = getGsonParser();
 			String jsonReport = gsonParser.toJson(map);
