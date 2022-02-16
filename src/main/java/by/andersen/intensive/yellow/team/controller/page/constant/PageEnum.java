@@ -7,7 +7,8 @@ public enum PageEnum {
 	ERROR_PAGE_PATH("/error.jsp"),
 	USER_EDIT_FORM_PATH("/user-edit-page.jsp"),
 	REPORTS_PAGE("/reports-page.jsp"),
-	REPORT_FORM_PAGE("/report-form-page.jsp");
+	REPORT_FORM_PAGE("/report-form-page.jsp"),
+	JSON_REPORTS_PAGE("/json-page.jsp");
 	
 	String pagePath;
 	

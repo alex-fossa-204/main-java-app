@@ -5,15 +5,15 @@ import com.google.gson.GsonBuilder;
 
 public class GsonComplexSerializationFactory {
 	
-	private GsonBuilder gsonBuilder;
+	private static GsonBuilder gsonBuilder;
 	
 	private GsonComplexSerializationFactory() {
-		this.gsonBuilder = new GsonBuilder();
+		gsonBuilder = new GsonBuilder();
 		gsonBuilder.disableHtmlEscaping();
 		gsonBuilder.enableComplexMapKeySerialization();
 	}
 	
-	public Gson getGsonInstance() {
+	public static Gson getGsonInstance() {
 		return gsonBuilder.create();
 	}
 

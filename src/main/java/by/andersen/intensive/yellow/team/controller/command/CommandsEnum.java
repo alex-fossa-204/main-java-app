@@ -1,9 +1,9 @@
 package by.andersen.intensive.yellow.team.controller.command;
 
 import by.andersen.intensive.yellow.team.controller.command.impl.global.EmptyCommand;
+import by.andersen.intensive.yellow.team.controller.command.impl.global.GetJsonReportsCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.AddReportCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.DeleteReportCommand;
-import by.andersen.intensive.yellow.team.controller.command.impl.report.GetJsonReportsCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.ShowReportEditFormCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.ShowUserReportsCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.UpdateReportCommand;

@@ -12,7 +12,8 @@ public enum CommandAttribute {
 	CURRENT_PAGE_INDEX("currentPageIndex"),
 	REPORT_ATTRIBUTE("report"),
 	OLD_REPORT_TITLE_ATTRIBUTE("oldReportTitle"),
-	REPORT_ID_ATTRIBUTE("reportId");
+	REPORT_ID_ATTRIBUTE("reportId"),
+	JSON_DATA_ATTRIBUTE("jsonData");
 	
 	String attributeValue;
 	

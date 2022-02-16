@@ -18,7 +18,9 @@ public enum CommandParameter {
 	REPORT_TITLE_PARAMETER("reportTitle"),
 	REPORT_BODY_PARAMETER("reportBody"),
 	TIME_COSTS_PARAMETER("laborCosts"),
-	OLD_REPORT_TITLE_PARAMETER("oldReportTitle");
+	OLD_REPORT_TITLE_PARAMETER("oldReportTitle"),
+	
+	JSON_REPORT_DATE("reportDate");
 	
 	String parameterName;
 	
