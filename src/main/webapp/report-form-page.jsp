@@ -45,17 +45,18 @@
 		<form method="POST" class="text-black my-3" role="form" action='apply?command=update_report'>
   			<div class="form-group p-2">
     			<label for="username">Report Title:</label>
-    			<input type="text" class="form-control" id="username" name="username" aria-describedby="userNameHelp" value='<c:out value="${user.userName}"/>'>
+    			<input type="text" class="form-control" id="reportTitle" name="reportTitle" aria-describedby="userNameHelp" value='<c:out value="${report.reportTitle}"/>'>
   			</div>
   			<div class="form-group p-2">
     			<label for="exampleFormControlTextarea1">Report Body:</label>
-    			<textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+    			<textarea class="form-control" id="reportBody" rows="5" name="reportBody"><c:out value="${report.reportBody}"/></textarea>
   			</div>
   			<div class="form-group p-2">
     			<label for="firstName">Time Сosts(hours):</label>
-    			<input type="text" class="form-control sm" id="firstName" name="firstName" value='<c:out value="${user.firstName}"/>'>
+    			<input type="text" class="form-control sm" id="laborCosts" name="laborCosts" value='<c:out value="${report.laborCost}"/>'>
   			</div>
-  			<input type="hidden" class="form-control" id="currentUserName" name="currentUserName" aria-describedby="userNameHelp" value='<c:out value="${currentUserName}"/>'>  			
+  			<input type="hidden" class="form-control" id="currentUserName" name="currentUserName" aria-describedby="userNameHelp" value='<c:out value="${username}"/>'> 
+  			<input type="hidden" class="form-control" id="reportId" name="reportId" aria-describedby="reportIdHelp" value='<c:out value="${reportId}"/>'>  			
   			<input type="submit" class="btn btn-success py-3 px-5 mx-2" value="Submit">
   			<a class="btn btn-danger py-3 px-5 mx-2" href="apply?command=get_all_users&page=1">Cancel</a>
 		</form>

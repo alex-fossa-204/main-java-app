@@ -5,13 +5,13 @@ import by.andersen.intensive.yellow.team.controller.command.impl.report.AddRepor
 import by.andersen.intensive.yellow.team.controller.command.impl.report.DeleteReportCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.GetJsonReportsCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.ShowAddReportFormCommand;
-import by.andersen.intensive.yellow.team.controller.command.impl.report.ShowEditReportFormCommand;
+import by.andersen.intensive.yellow.team.controller.command.impl.report.ShowReportEditFormCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.ShowUserReportsCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.UpdateReportCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.user.AddUserCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.user.DeleteUserCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.user.GetAllUsersCommand;
-import by.andersen.intensive.yellow.team.controller.command.impl.user.ShowUserInfoCommand;
+import by.andersen.intensive.yellow.team.controller.command.impl.user.ShowUserEditFormCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.user.UpdateUserCommand;
 
 public enum CommandsEnum {
@@ -20,7 +20,7 @@ public enum CommandsEnum {
 	
 	GET_ALL_USERS(new GetAllUsersCommand()),
 	
-	SHOW_USER_INFO(new ShowUserInfoCommand()),
+	SHOW_USER_INFO(new ShowUserEditFormCommand()),
 	
 	UPDATE_USER(new UpdateUserCommand()),
 	
@@ -34,7 +34,7 @@ public enum CommandsEnum {
 	
 	SHOW_ADD_REPORT_FORM(new ShowAddReportFormCommand()),
 	
-	SHOW_EDIT_REPORT_FORM(new ShowEditReportFormCommand()),
+	SHOW_EDIT_REPORT_FORM(new ShowReportEditFormCommand()),
 	
 	SHOW_USER_REPORTS(new ShowUserReportsCommand()),
 	

@@ -9,6 +9,8 @@ public interface IReportDAO extends DAO<Report> {
 	
 	Report findReportByTitle(String title) throws DAOException;
 	
+	Report findUserReportById(String username, long id) throws DAOException;
+	
 	List<Report> findUserReportsByDate(String username, String date) throws DAOException;
 	
 	List<Report> findUserReports(String username) throws DAOException;

@@ -14,10 +14,11 @@ public enum CommandParameter {
 	USER_EMAIL_PARAMETER("email"),
 	USER_ROLE_PARAMETER("role"),
 	
+	REPORT_ID_PARAMETER("reportId"),
 	REPORT_TITLE_PARAMETER("reportTitle"),
 	REPORT_BODY_PARAMETER("reportBody"),
 	TIME_COSTS_PARAMETER("laborCosts"),
-	;
+	OLD_REPORT_TITLE_PARAMETER("oldReportTitle");
 	
 	String parameterName;
 	

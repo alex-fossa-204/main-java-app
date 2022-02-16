@@ -32,9 +32,10 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 	private static final String SELECT_USER_REPORTS_QUERY = "SELECT users.user_firstname, users.user_secondname, users.user_lastname, reports.id, reports.title, reports.reported_by, reports.date, reports.labor_costs, reports.body FROM users INNER JOIN reports ON users.id = reports.reported_by WHERE users.username =";
 	private static final String SELECT_REPORT_BY_ID_QUERY = "SELECT users.user_firstname, users.user_secondname, users.user_lastname, reports.id, reports.title, reports.reported_by, reports.date, reports.labor_costs, reports.body FROM users INNER JOIN reports ON users.id = reports.reported_by WHERE reports.id = ? ORDER BY date ASC";
 	private static final String SELECT_REPORT_BY_TITLE_QUERY = "SELECT users.user_firstname, users.user_secondname, users.user_lastname, reports.id, reports.title, reports.reported_by, reports.date, reports.labor_costs, reports.body FROM users INNER JOIN reports ON users.id = reports.reported_by WHERE reports.title = ?";
+	private static final String SELECT_USER_REPORT_BY_ID_QUERY = "SELECT users.user_firstname, users.user_secondname, users.user_lastname, reports.id, reports.title, reports.reported_by, reports.date, reports.labor_costs, reports.body FROM users INNER JOIN reports ON users.id = reports.reported_by WHERE reports.id = ? AND users.username = ?";
 	private static final String SAVE_USER_REPORT_QUERY = "INSERT INTO reports (title, body, reported_by, labor_costs) VALUES (?, ?, ?, ?)";
 	private static final String DELETE_REPORT_BY_ID_QUERY = "DELETE FROM reports WHERE id=?";
-	private static final String UPDATE_REPORT_QUERY = "UPDATE reports SET title=?, reported_by=?, labor_costs=? WHERE id = ?";
+	private static final String UPDATE_REPORT_QUERY = "UPDATE reports SET title=?, body=?, labor_costs=? WHERE id = ?";
 	private static final String AND_DATE_SELECTION_QUERY = "AND reports.date =";
 	
 	public SqlReportDAO(Connection connection) {
@@ -74,6 +75,20 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 	}
 	
 	@Override
+	public Report findUserReportById(String username, long id) throws DAOException {
+		Report report = null;
+		try (PreparedStatement preparedStatement = prepareStatementForSqlQuery(SELECT_USER_REPORT_BY_ID_QUERY, id, username)) {
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				report = buildEntity(resultSet);
+			}
+		} catch (SQLException sqlException) {
+			throw new DAOException(sqlException.getMessage(), sqlException);
+		}
+		return report;
+	}
+
+	@Override
 	public List<Report> findUserReports(String username) throws DAOException {
 		List<Report> entitiesList = new ArrayList<Report>();
 		
@@ -88,6 +103,24 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 			throw new DAOException(sqlException.getMessage(), sqlException);
 		}
 		return entitiesList;
+	}
+	
+	
+
+	@Override
+	public boolean update(Report e) throws DAOException {
+		boolean result = false;
+		String reportTitle = e.getReportTitle();
+		String reportBody = e.getReportBody();
+		int laborCosts = e.getLaborCost();
+		long reportId = e.getId();
+		try (PreparedStatement preparedStatement = prepareStatementForSqlQuery(UPDATE_REPORT_QUERY, reportTitle, reportBody, laborCosts, reportId)) {
+			int queryResult = preparedStatement.executeUpdate();
+			result = queryResult != 0;
+		} catch (SQLException sqlException) {
+			throw new DAOException(sqlException.getMessage(), sqlException);
+		}
+		return result;
 	}
 
 	@Override

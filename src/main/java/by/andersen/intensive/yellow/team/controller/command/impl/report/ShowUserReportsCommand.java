@@ -30,7 +30,6 @@ public class ShowUserReportsCommand  implements Command {
 		int pagesQuantity = 0; 
 		String pageReqParameterValue = httpServletRequest.getParameter(PAGE_PARAMETER.getParameterName());
 		String currentUserName = httpServletRequest.getParameter(USERNAME_PARAMETER.getParameterName());
-		System.out.println(currentUserName);
 		if(pageReqParameterValue != null) {
 			pageIndex = Integer.valueOf(pageReqParameterValue);
 		}
@@ -42,7 +41,6 @@ public class ShowUserReportsCommand  implements Command {
 			httpServletRequest.setAttribute(NUMBER_OF_PAGES_ATTRIBUTE.getAttributeName(), pagesQuantity);
 			httpServletRequest.setAttribute(CURRENT_PAGE_INDEX.getAttributeName(), pageIndex);
 			httpServletRequest.setAttribute(USERS_PAGE_CONTENT_ATTRIBUTE.getAttributeName(), reportsPage);
-			System.out.println(reportsPage);
 			resultPage = new Page(REPORTS_PAGE.getPagePath(), false);
 		} catch (ServiceException e) {
 			resultPage = new Page(ERROR_PAGE_PATH.getPagePath(), true, SERVICE_ERROR_MESSAGE.getMessage());

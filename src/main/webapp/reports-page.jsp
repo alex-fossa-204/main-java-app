@@ -69,7 +69,7 @@
       				<td scope="col" class="py-3"><c:out value="${report.laborCost}"/></td>
       				<td scope="col" class="py-3"><c:out value="${report.reportBody}"/></td>
       				<td scope="col" class="py-3">
-      					<a class="btn btn-warning" href='apply?command=update_report&username=<c:out value="${user.userName}"/>'>Update</a>
+      					<a class="btn btn-warning" href='apply?command=show_edit_report_form&username=<c:out value="${currentUserName}"/>&reportId=<c:out value="${report.id}"/>'>Update</a>
       				</td>
       				<td scope="col" class="py-3">
       					<form method="POST" action="apply?command=delete_report&id=<c:out value='${user.id}'/>">

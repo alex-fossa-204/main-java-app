@@ -14,7 +14,7 @@ public interface IReportService {
 	
 	boolean addUserReport(String username, String reportTitle, String reportBody, int laborCost) throws ServiceException;
 	
-	boolean updateUserReport(String oldReportTitle, String reportTitle, String reportBody, Date reportDate, int laborCost) throws ServiceException;
+	boolean updateUserReport(long reportId, String reportTitle, String reportBody, int laborCost) throws ServiceException;
 	
 	boolean deleteUserReport(long reportId) throws ServiceException;
 	
@@ -25,6 +25,8 @@ public interface IReportService {
 	List<Report> getAllReportsForSingleUserPageable(String username, int page, int recordsPerPage, int totalPages) throws ServiceException;
 	
 	Report getReportByTitle(String reportTitle) throws ServiceException;
+	
+	Report getUserReportById(String username, long reportId) throws ServiceException;
 	
 	int getSingleUserReportsQuantity(String username) throws ServiceException;
 }

@@ -14,7 +14,7 @@ import by.andersen.intensive.yellow.team.service.IUserService;
 import by.andersen.intensive.yellow.team.service.exception.ServiceException;
 import by.andersen.intensive.yellow.team.service.impl.UserService;
 
-public class ShowUserInfoCommand implements Command{
+public class ShowUserEditFormCommand implements Command{
 
 	@Override
 	public Page execute(HttpServletRequest httpServletRequest) {

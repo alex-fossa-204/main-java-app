@@ -43,18 +43,19 @@ public class ReportService implements IReportService {
 	}
 
 	@Override
-	public boolean updateUserReport(String oldReportTitle, String reportTitle, String reportBody, Date reportDate,
+	public boolean updateUserReport(long reportId, String reportTitle, String reportBody,
 			int laborCost) throws ServiceException {
 		boolean result = false;
 		Report reportToUpdate = null;
 		try (ConnectionManager connectionManager = new ConnectionManager()) {
 			IReportDAO reportDao = new SqlReportDAO(connectionManager.getConnection());
-			reportToUpdate = reportDao.findReportByTitle(reportTitle);
+			reportToUpdate = reportDao.getById(reportId);
 			reportToUpdate.setReportTitle(reportTitle);
 			reportToUpdate.setReportBody(reportBody);
-			reportToUpdate.setReportDate(reportDate);
 			reportToUpdate.setLaborCost(laborCost);
-			reportDao.update(reportToUpdate);
+			System.out.println("report to update: " + reportToUpdate);
+			result = reportDao.update(reportToUpdate);
+			System.out.println("Service result = " + result);
 		} catch (DAOException daoException) {
 			throw new ServiceException(daoException.getMessage(), daoException);
 		} catch (Exception exception) {
@@ -115,6 +116,20 @@ public class ReportService implements IReportService {
 	}
 	
 	
+
+	@Override
+	public Report getUserReportById(String username, long reportId) throws ServiceException {
+		Report resultReport = null;
+		try (ConnectionManager connectionManager = new ConnectionManager()) {
+			IReportDAO reportDao = new SqlReportDAO(connectionManager.getConnection());
+			resultReport = reportDao.findUserReportById(username, reportId);
+		} catch (DAOException daoException) {
+			throw new ServiceException(daoException.getMessage(), daoException);
+		} catch (Exception exception) {
+			throw new ServiceException(exception.getMessage(), exception);
+		}
+		return resultReport;
+	}
 
 	@Override
 	public List<Report> getAllReportsForSingleUser(String username) throws ServiceException {
