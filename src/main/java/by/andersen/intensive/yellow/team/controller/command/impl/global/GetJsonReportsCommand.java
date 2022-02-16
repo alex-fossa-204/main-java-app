@@ -26,10 +26,9 @@ public class GetJsonReportsCommand implements Command {
 	@Override
 	public Page execute(HttpServletRequest httpServletRequest) {
 		Page resultPage = null;
-		LocalDate currentdate = LocalDate.now();
 		IReportService reportService = new ReportService();
 		try {
-			Map<UserDTO, List<ReportDTO>> map = reportService.getAllUsersReportsDtoMapByDate(currentdate.toString());
+			Map<UserDTO, List<ReportDTO>> map = reportService.getAllUsersReportsDtoMapByDate(LocalDate.now().toString());
 			System.out.println(map.toString());
 			Gson gsonParser = getGsonParser();
 			String jsonReport = gsonParser.toJson(map);
