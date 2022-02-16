@@ -1,6 +1,5 @@
 package by.andersen.intensive.yellow.team.controller.command.impl.global;
 
-import static by.andersen.intensive.yellow.team.controller.command.constant.CommandParameter.*;
 import static by.andersen.intensive.yellow.team.controller.command.constant.CommandAttribute.*;
 import static by.andersen.intensive.yellow.team.controller.command.constant.MessageEnum.*;
 import static by.andersen.intensive.yellow.team.controller.page.constant.PageEnum.*;
