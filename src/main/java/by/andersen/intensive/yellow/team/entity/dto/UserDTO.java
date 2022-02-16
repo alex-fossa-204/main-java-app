@@ -9,14 +9,11 @@ public class UserDTO implements Serializable{
 
 	private String firstName;
 
-	private String secondName;
-
 	private String lastName;
 
-	public UserDTO(String firstName, String secondName, String lastName) {
+	public UserDTO(String firstName, String lastName) {
 		super();
 		this.firstName = firstName;
-		this.secondName = secondName;
 		this.lastName = lastName;
 	}
 
@@ -32,14 +29,6 @@ public class UserDTO implements Serializable{
 		this.firstName = firstName;
 	}
 
-	public String getSecondName() {
-		return secondName;
-	}
-
-	public void setSecondName(String secondName) {
-		this.secondName = secondName;
-	}
-
 	public String getLastName() {
 		return lastName;
 	}
@@ -50,7 +39,7 @@ public class UserDTO implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(firstName, lastName, secondName);
+		return Objects.hash(firstName, lastName);
 	}
 
 	@Override
@@ -62,8 +51,7 @@ public class UserDTO implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		UserDTO other = (UserDTO) obj;
-		return Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName)
-				&& Objects.equals(secondName, other.secondName);
+		return Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName);
 	}
 
 	@Override
@@ -71,8 +59,6 @@ public class UserDTO implements Serializable{
 		StringBuilder builder = new StringBuilder();
 		builder.append("UserDTO [firstName=");
 		builder.append(firstName);
-		builder.append(", secondName=");
-		builder.append(secondName);
 		builder.append(", lastName=");
 		builder.append(lastName);
 		builder.append("]");

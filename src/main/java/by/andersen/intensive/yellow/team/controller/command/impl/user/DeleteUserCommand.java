@@ -29,11 +29,11 @@ public class DeleteUserCommand implements Command{
 				resultPage = new Page(USERS_PAGE_PATH.getPagePath(), false, USER_DELETED_SUCCESSFULLY_MESSAGE.getMessage());
 			}
 			if(!isDeleteSuccessfull) {
-				resultPage = new Page(ERROR_PAGE_PATH.getPagePath(), true, USER_DELETE_FAILED_MESSAGE.getMessage());
+				resultPage = new Page(ERROR_PAGE_PATH.getPagePath(), false, USER_DELETE_FAILED_MESSAGE.getMessage());
 			}
 			
 		} catch (ServiceException e) {
-			resultPage = new Page(ERROR_PAGE_PATH.getPagePath(), true, SERVICE_ERROR_MESSAGE.getMessage());
+			resultPage = new Page(ERROR_PAGE_PATH.getPagePath(), false, SERVICE_ERROR_MESSAGE.getMessage());
 		}
 		
 		return resultPage;

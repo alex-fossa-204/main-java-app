@@ -51,7 +51,18 @@ public class Page {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Page [pageUrl=");
+		builder.append(pageUrl);
+		builder.append(", isRedirect=");
+		builder.append(isRedirect);
+		builder.append(", message=");
+		builder.append(message);
+		builder.append("]");
+		return builder.toString();
+	}
 	
 }

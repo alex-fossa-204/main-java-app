@@ -5,11 +5,10 @@ import javax.servlet.http.HttpServletRequest;
 import by.andersen.intensive.yellow.team.controller.command.Command;
 import by.andersen.intensive.yellow.team.controller.page.Page;
 
-public class UpdateReportCommand implements Command {
+public class ShowEditReportFormCommand implements Command {
 
 	@Override
 	public Page execute(HttpServletRequest httpServletRequest) {
-		
 		return null;
 	}
 

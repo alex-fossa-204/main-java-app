@@ -22,7 +22,7 @@ public interface IReportService {
 	
 	List<Report> getAllReportsForSingleUser(String username) throws ServiceException;
 	
-	List<Report> getAllReportsForSingleUserPageable(String username) throws ServiceException;
+	List<Report> getAllReportsForSingleUserPageable(String username, int page, int recordsPerPage, int totalPages) throws ServiceException;
 	
 	Report getReportByTitle(String reportTitle) throws ServiceException;
 	

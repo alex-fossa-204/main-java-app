@@ -23,7 +23,7 @@ public class AddUserCommand implements Command {
 		String firstName = httpServletRequest.getParameter(FIRSTNAME_PARAMETER.getParameterName());
 		String secondName = httpServletRequest.getParameter(SECONDNAME_PARAMETER.getParameterName());
 		String lastName = httpServletRequest.getParameter(LASTNAME_PARAMETER.getParameterName());
-		int age = Integer.valueOf(httpServletRequest.getParameter(AGE_PARAMETER.getParameterName()));
+		int age = 0;
 		String phoneNumber = httpServletRequest.getParameter(USERNAME_PARAMETER.getParameterName());
 		String emailAddress = httpServletRequest.getParameter(USER_EMAIL_PARAMETER.getParameterName());
 		IUserService userService = new UserService();

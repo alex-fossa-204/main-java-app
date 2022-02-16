@@ -34,7 +34,7 @@ public class Controller extends HttpServlet {
 		CommandManager commandManager = new CommandManager();
 		Command command = commandManager.defineCommand(httpServletRequest);
 		Page page = command.execute(httpServletRequest);
-		
+		System.out.println(page);
 		boolean isRedirect = page.isRedirect();
 		if(isRedirect) {
 			redirect(page, httpServletRequest, httpServletResponse);
@@ -42,7 +42,6 @@ public class Controller extends HttpServlet {
 		if(!isRedirect) {
 			forward(page, httpServletRequest, httpServletResponse);
 		}
-		
 	}
 	
 	private void redirect(Page page, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws IOException {

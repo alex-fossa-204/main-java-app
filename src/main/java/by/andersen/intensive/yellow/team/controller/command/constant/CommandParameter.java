@@ -12,7 +12,12 @@ public enum CommandParameter {
 	AGE_PARAMETER("age"),
 	PHONE_PARAMETER("phoneNumber"),
 	USER_EMAIL_PARAMETER("email"),
-	USER_ROLE_PARAMETER("role");
+	USER_ROLE_PARAMETER("role"),
+	
+	REPORT_TITLE_PARAMETER("reportTitle"),
+	REPORT_BODY_PARAMETER("reportBody"),
+	TIME_COSTS_PARAMETER("laborCosts"),
+	;
 	
 	String parameterName;
 	

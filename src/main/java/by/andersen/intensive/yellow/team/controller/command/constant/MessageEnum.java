@@ -18,7 +18,17 @@ public enum MessageEnum {
 	USER_UPDATE_FAILED_MESSAGE("User Update Failed Message"),
 	
 	USER_DELETED_SUCCESSFULLY_MESSAGE("User Deleted Successfully Message"),
-	USER_DELETE_FAILED_MESSAGE("User Delete Failed Message");
+	USER_DELETE_FAILED_MESSAGE("User Delete Failed Message"),
+	
+	REPORT_ADDED_SUCCESSFULLY_MESSAGE("Report Added Successfully Message"),
+	REPORT_ADD_FAILED_MESSAGE("Report Add Failed Message"),
+	
+	REPORT_UPDATED_SUCCESSFULLY_MESSAGE("Report Updated Successfully Message"),
+	REPORT_UPDATE_FAILED_MESSAGE("Report Update Failed Message"),
+	
+	REPORT_DELETED_SUCCESSFULLY_MESSAGE("Report Deleted Successfully Message"),
+	REPORT_DELETE_FAILED_MESSAGE("Report Delete Failed Message")
+	;
 	
 	
 	

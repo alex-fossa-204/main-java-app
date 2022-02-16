@@ -133,9 +133,18 @@ public class ReportService implements IReportService {
 	
 
 	@Override
-	public List<Report> getAllReportsForSingleUserPageable(String username) throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Report> getAllReportsForSingleUserPageable(String username, int page, int recordsPerPage, int totalPages) throws ServiceException {
+		List<Report> singleUserReportsPageable = null;
+		try (ConnectionManager connectionManager = new ConnectionManager()) {
+			IReportDAO reportDao = new SqlReportDAO(connectionManager.getConnection());
+			List<Report> allReports = reportDao.findUserReports(username);
+			singleUserReportsPageable = paginateReports(page, recordsPerPage, allReports, totalPages);
+		} catch (DAOException daoException) {
+			throw new ServiceException(daoException.getMessage(), daoException);
+		} catch (Exception exception) {
+			throw new ServiceException(exception.getMessage(), exception);
+		}
+		return singleUserReportsPageable;
 	}
 
 	private List<ReportDTO> convertUserReportListToDTO(List<Report> reportList) {
@@ -148,10 +157,10 @@ public class ReportService implements IReportService {
 	}
 
 	private UserDTO convertUserToDTO(User user) {
-		return new UserDTO(user.getFirstName(), user.getSecondName(), user.getLastName());
+		return new UserDTO(user.getFirstName(), user.getLastName());
 	}
 	
-	private List<Report> paginateUsers(int page, int recordsPerPage, List<Report> allReports, int totalPages) {
+	private List<Report> paginateReports(int page, int recordsPerPage, List<Report> allReports, int totalPages) {
 		List<Report> result = new ArrayList<>();
 		int allRecords = allReports.size();
 		int recordCounter = 0;

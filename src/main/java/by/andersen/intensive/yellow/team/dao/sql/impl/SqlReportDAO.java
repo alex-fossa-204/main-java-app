@@ -26,7 +26,6 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 	private static final String LABOR_COSTS_COL_LABEL = "labor_costs";
 	
 	private static final String USER_DTO_FIRSTNAME_COL_LABEL = "user_firstname";
-	private static final String USER_DTO_SECONDNAME_COL_LABEL = "user_secondname";
 	private static final String USER_DTO_LASTNAME_COL_LABEL = "user_lastname";
 	
 	private static final String SELECT_ALL_USERS_REPORTS_QUERY = "SELECT users.user_firstname, users.user_secondname, users.user_lastname, reports.id, reports.title, reports.reported_by, reports.date, reports.labor_costs, reports.body FROM users INNER JOIN reports ON users.id = reports.reported_by ORDER BY date ASC";
@@ -138,9 +137,8 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 			report.setReportDate(date);
 			
 			String userDtoFirstName = resultSet.getString(USER_DTO_FIRSTNAME_COL_LABEL);
-			String userDtoSecondName = resultSet.getString(USER_DTO_SECONDNAME_COL_LABEL);
 			String userDtoLastName = resultSet.getString(USER_DTO_LASTNAME_COL_LABEL);
-			UserDTO reportedBy = new UserDTO(userDtoFirstName, userDtoSecondName, userDtoLastName);
+			UserDTO reportedBy = new UserDTO(userDtoFirstName, userDtoLastName);
 			report.setReportedBy(reportedBy);
 			
 			Long reporterId = resultSet.getLong(REPORTED_BY_USER_ID_COL_LABEL);

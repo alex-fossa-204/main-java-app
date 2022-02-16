@@ -41,29 +41,21 @@
             	</div>
         	</div>
     	</nav>
-    	<div class="container rounded-1 bg-warning p-2 col-sm-5">
-		<form method="POST" class="text-black" role="form" action='apply?command=update_user'>
+    	<div class="container rounded-1 bg-warning p-2 my-5 col-sm-5">
+		<form method="POST" class="text-black my-3" role="form" action='apply?command=update_report'>
   			<div class="form-group p-2">
-    			<label for="username">Username:</label>
+    			<label for="username">Report Title:</label>
     			<input type="text" class="form-control" id="username" name="username" aria-describedby="userNameHelp" value='<c:out value="${user.userName}"/>'>
   			</div>
   			<div class="form-group p-2">
-    			<label for="firstName">First Name:</label>
+    			<label for="exampleFormControlTextarea1">Report Body:</label>
+    			<textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+  			</div>
+  			<div class="form-group p-2">
+    			<label for="firstName">Time Сosts(hours):</label>
     			<input type="text" class="form-control sm" id="firstName" name="firstName" value='<c:out value="${user.firstName}"/>'>
   			</div>
-  			<div class="form-group p-2">
-    			<label for="lastName">Last Name:</label>
-    			<input type="text" class="form-control" id="lastName" name="lastName" value='<c:out value="${user.lastName}"/>'>
-  			</div>
-  			<div class="form-group p-2">
-    			<label for="email">Email address</label>
-    			<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value='<c:out value="${user.emailAddress}"/>'>
-  			</div> 
-  			<div class="form-group p-2">
-    			<label for="role">Role:</label>
-    			<input type="text" class="form-control" id="role" name="role" value='<c:out value="${user.userRole}"/>'>
-  			</div>     
-  			<input type="hidden" class="form-control" id="old_username" name="old_username" aria-describedby="userNameHelp" value='<c:out value="${username_old}"/>'>  			
+  			<input type="hidden" class="form-control" id="currentUserName" name="currentUserName" aria-describedby="userNameHelp" value='<c:out value="${currentUserName}"/>'>  			
   			<input type="submit" class="btn btn-success py-3 px-5 mx-2" value="Submit">
   			<a class="btn btn-danger py-3 px-5 mx-2" href="apply?command=get_all_users&page=1">Cancel</a>
 		</form>

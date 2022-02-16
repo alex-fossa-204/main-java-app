@@ -39,42 +39,6 @@
             	</div>
         	</div>
     	</nav>
-    	
-        <table class="table table-hover table-dark mb-0 p-3">
-  			<thead>
-     			<tr>
-      				<th scope="col"><h4>Username</h4></th>
-      				<th scope="col"><h4>First Name</h4></th>
-      				<th scope="col"><h4>Last Name</h4></th>
-      				<th scope="col"><h4>Email</h4></th>
-      				<th scope="col"><h4>Role</h4></th>
-      				<th scope="col"></th>
-      				<th scope="col"></th>
-    			</tr>
-  			</thead>
-  			<tbody>
-  			<c:forEach var="user" items="${list}">
-    			<tr>
-      				<td scope="col" class="py-3"><c:out value="${user.userName}"/></td>
-      				<td scope="col" class="py-3"><c:out value="${user.firstName}"/></td>
-      				<td scope="col" class="py-3"><c:out value="${user.lastName}"/></td>
-      				<td scope="col" class="py-3"><c:out value="${user.emailAddress}"/></td>
-      				<td scope="col" class="py-3"><c:out value="${user.userRole}"/></td>
-      				<td scope="col" class="py-3">
-      					<a class="btn btn-success" href='apply?command=show_user_reports&username=<c:out value="${user.userName}&page=1"/>'>Reports</a>
-      				</td>
-      				<td scope="col" class="py-3">	
-      					<a class="btn btn-warning" href='apply?command=show_user_info&username=<c:out value="${user.userName}"/>'>Update</a>
-      				</td>
-      				<td scope="col" class="py-3">
-      					<form method="POST" action="apply?command=delete_user&id=<c:out value='${user.id}'/>">
-      						<button type="submit" class="btn btn-danger">Delete</button>
-      					</form>
-      				</td>
-    			</tr>
-    		</c:forEach>		    						    						  						
-  			</tbody>
-		</table>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
 			<div class="pagination" id="pagination"></div>
 		</nav>
