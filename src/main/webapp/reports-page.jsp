@@ -41,7 +41,7 @@
             	</div>
         	</div>
     	</nav>
-    	<c:if test="${numberOfPages < 1}">
+    	<c:if test="${list.size() < 1}">
   			<h2 class="my-5">
     			<a href="" class="nav-link text-warning message" data-bs-toggle="modal" data-bs-target="#addReportModal">
     				You don't have any reports. Press Here to add.
@@ -133,9 +133,10 @@
     		</a> 
     	</h2>
   		<script type="text/javascript">
+  			let username = "<c:out value="${currentUserName}"/> "; username.trim();
   			let pages = "<c:out value='${numberOfPages}'/>";
   			let pageSelectorCounter = "<c:out value='${numberOfPages}'/>";
-  			<%@ include file="/static/js/page-navigator.js"%>
+  			<%@ include file="/static/js/reports-page-navigator.js"%>
   		</script>
     	<script src="<c:url value='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js'/>" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	</body>
