@@ -23,7 +23,7 @@ public class CommandManager {
 			CommandsEnum commandEnumValue = CommandsEnum.valueOf(action.toUpperCase());
 			command = commandEnumValue.getCommand();
 		} catch (IllegalArgumentException illegalArgumentException) {
-			String message = String.format("%s %s", COMMAND_ERROR_MESSAGE, action);
+			String message = String.format("%s %s", COMMAND_ERROR_MESSAGE.getMessage(), action);
 			httpServletRequest.setAttribute(MESSAGE_ATTRIBUTE.getAttributeName(), message);
 		}
 		return command;

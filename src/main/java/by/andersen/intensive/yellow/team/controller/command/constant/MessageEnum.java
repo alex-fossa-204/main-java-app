@@ -8,7 +8,7 @@ public enum MessageEnum {
 	
 	PRESS_HERE_TO_CONTINUE(". Press Here To Continue"),
 	
-	COMMAND_ERROR_MESSAGE("Command Error Message"),
+	COMMAND_ERROR_MESSAGE("Command Error Message. Unknown Request:"),
 	SERVICE_ERROR_MESSAGE("Service Error Message"),
 	
 	USER_ADDED_SUCCESSFULLY_MESSAGE("User Added Successfully Message"),
@@ -27,8 +27,7 @@ public enum MessageEnum {
 	REPORT_UPDATE_FAILED_MESSAGE("Report Update Failed Message"),
 	
 	REPORT_DELETED_SUCCESSFULLY_MESSAGE("Report Deleted Successfully Message"),
-	REPORT_DELETE_FAILED_MESSAGE("Report Delete Failed Message")
-	;
+	REPORT_DELETE_FAILED_MESSAGE("Report Delete Failed Message");
 	
 	
 	
