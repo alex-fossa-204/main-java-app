@@ -1,7 +1,6 @@
 package by.andersen.intensive.yellow.team.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +14,6 @@ import by.andersen.intensive.yellow.team.dao.sql.impl.SqlUserDAO;
 import by.andersen.intensive.yellow.team.entity.dto.ReportDTO;
 import by.andersen.intensive.yellow.team.entity.dto.UserDTO;
 import by.andersen.intensive.yellow.team.entity.impl.Report;
-import by.andersen.intensive.yellow.team.entity.impl.RoleEnum;
 import by.andersen.intensive.yellow.team.entity.impl.User;
 import by.andersen.intensive.yellow.team.service.IReportService;
 import by.andersen.intensive.yellow.team.service.exception.ServiceException;
@@ -53,9 +51,7 @@ public class ReportService implements IReportService {
 			reportToUpdate.setReportTitle(reportTitle);
 			reportToUpdate.setReportBody(reportBody);
 			reportToUpdate.setLaborCost(laborCost);
-			System.out.println("report to update: " + reportToUpdate);
 			result = reportDao.update(reportToUpdate);
-			System.out.println("Service result = " + result);
 		} catch (DAOException daoException) {
 			throw new ServiceException(daoException.getMessage(), daoException);
 		} catch (Exception exception) {
@@ -145,7 +141,19 @@ public class ReportService implements IReportService {
 		return currentUserReports;
 	}
 	
-	
+	@Override
+	public List<Report> getAllReportsForSingleUserByDate(String username, String date) throws ServiceException {
+		List<Report> currentUserReports = null;
+		try (ConnectionManager connectionManager = new ConnectionManager()) {
+			IReportDAO reportDao = new SqlReportDAO(connectionManager.getConnection());
+			currentUserReports = reportDao.findUserReportsByDate(username, date);
+		} catch (DAOException daoException) {
+			throw new ServiceException(daoException.getMessage(), daoException);
+		} catch (Exception exception) {
+			throw new ServiceException(exception.getMessage(), exception);
+		}
+		return currentUserReports;
+	}
 
 	@Override
 	public List<Report> getAllReportsForSingleUserPageable(String username, int page, int recordsPerPage, int totalPages) throws ServiceException {
@@ -153,6 +161,21 @@ public class ReportService implements IReportService {
 		try (ConnectionManager connectionManager = new ConnectionManager()) {
 			IReportDAO reportDao = new SqlReportDAO(connectionManager.getConnection());
 			List<Report> allReports = reportDao.findUserReports(username);
+			singleUserReportsPageable = paginateReports(page, recordsPerPage, allReports, totalPages);
+		} catch (DAOException daoException) {
+			throw new ServiceException(daoException.getMessage(), daoException);
+		} catch (Exception exception) {
+			throw new ServiceException(exception.getMessage(), exception);
+		}
+		return singleUserReportsPageable;
+	}
+	
+	@Override
+	public List<Report> getAllReportsForSingleUserPageableByDate(String username, String date, int page, int recordsPerPage, int totalPages) throws ServiceException {
+		List<Report> singleUserReportsPageable = null;
+		try (ConnectionManager connectionManager = new ConnectionManager()) {
+			IReportDAO reportDao = new SqlReportDAO(connectionManager.getConnection());
+			List<Report> allReports = reportDao.findUserReportsByDate(username, date);
 			singleUserReportsPageable = paginateReports(page, recordsPerPage, allReports, totalPages);
 		} catch (DAOException daoException) {
 			throw new ServiceException(daoException.getMessage(), daoException);
@@ -212,6 +235,18 @@ public class ReportService implements IReportService {
 		int reportsQuantity = 0;
 		try {
 			List<Report> reports = getAllReportsForSingleUser(username);
+			reportsQuantity = reports.size();
+		} catch (ServiceException exception) {
+			throw exception;
+		}
+		return reportsQuantity;
+	}
+	
+	@Override
+	public int getSingleUserReportsQuantityByDate(String username, String date) throws ServiceException {
+		int reportsQuantity = 0;
+		try {
+			List<Report> reports = getAllReportsForSingleUserByDate(username, date);
 			reportsQuantity = reports.size();
 		} catch (ServiceException exception) {
 			throw exception;

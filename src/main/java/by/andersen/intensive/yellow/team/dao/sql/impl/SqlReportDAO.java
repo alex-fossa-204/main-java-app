@@ -36,7 +36,7 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 	private static final String SAVE_USER_REPORT_QUERY = "INSERT INTO reports (title, body, reported_by, labor_costs) VALUES (?, ?, ?, ?)";
 	private static final String DELETE_REPORT_BY_ID_QUERY = "DELETE FROM reports WHERE id=?";
 	private static final String UPDATE_REPORT_QUERY = "UPDATE reports SET title=?, body=?, labor_costs=? WHERE id = ?";
-	private static final String AND_DATE_SELECTION_QUERY = "AND reports.date =";
+	private static final String AND_BY_DATE_SELECTION_QUERY = "AND reports.date =";
 	
 	public SqlReportDAO(Connection connection) {
 		super(connection);
@@ -62,7 +62,7 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 		List<Report> entitiesList = new ArrayList<Report>();
 		
 		try (Statement statement = connection.createStatement()) {
-			String sqlQuery = String.format("%s '%s' %s '%s'", SELECT_USER_REPORTS_QUERY, username, AND_DATE_SELECTION_QUERY, date);
+			String sqlQuery = String.format("%s '%s' %s '%s'", SELECT_USER_REPORTS_QUERY, username, AND_BY_DATE_SELECTION_QUERY, date);
 			ResultSet resultSet = statement.executeQuery(sqlQuery);
 			while (resultSet.next()) {
 				Report entity = buildEntity(resultSet);

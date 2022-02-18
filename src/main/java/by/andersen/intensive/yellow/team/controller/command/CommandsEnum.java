@@ -5,6 +5,7 @@ import by.andersen.intensive.yellow.team.controller.command.impl.global.GetJsonR
 import by.andersen.intensive.yellow.team.controller.command.impl.report.AddReportCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.DeleteReportCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.ShowReportEditFormCommand;
+import by.andersen.intensive.yellow.team.controller.command.impl.report.ShowUserReportsByDateCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.ShowUserReportsCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.UpdateReportCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.user.AddUserCommand;
@@ -34,6 +35,8 @@ public enum CommandsEnum {
 	SHOW_EDIT_REPORT_FORM(new ShowReportEditFormCommand()),
 	
 	SHOW_USER_REPORTS(new ShowUserReportsCommand()),
+	
+	SHOW_USER_REPORTS_BY_DATE(new ShowUserReportsByDateCommand()),
 	
 	UPDATE_REPORT(new UpdateReportCommand()),
 	

@@ -29,7 +29,6 @@ public class GetJsonReportsCommand implements Command {
 		IReportService reportService = new ReportService();
 		try {
 			Map<UserDTO, List<ReportDTO>> map = reportService.getAllUsersReportsDtoMapByDate(LocalDate.now().toString());
-			System.out.println(map.toString());
 			Gson gsonParser = getGsonParser();
 			String jsonReport = gsonParser.toJson(map);
 			httpServletRequest.setAttribute(JSON_DATA_ATTRIBUTE.getAttributeName(), jsonReport);

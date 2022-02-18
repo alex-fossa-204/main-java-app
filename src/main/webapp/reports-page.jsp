@@ -24,11 +24,6 @@
             	</button>
             	<div class="collapse navbar-collapse mx-4" id = "navigation-menu">
                 	<ul class="navbar-nav ms-auto">
-                		<c:if test="${numberOfPages >= 1}">
-                			<li class="nav-item mx-4">
-                				<button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#addReportModal">Add New Report<i class="fa fa-users"></i></button>
-                    		</li>
-                		</c:if>
                     	<li class="nav-item">
                     		<a href="apply?command=get_all_users&page=1" class="nav-link">
             					<h2>Dashboard <i class="fa fa-cogs"></i></h2>
@@ -42,19 +37,52 @@
         	</div>
     	</nav>
     	<c:if test="${list.size() < 1}">
-  			<h2 class="my-5">
-    			<a href="" class="nav-link text-warning message" data-bs-toggle="modal" data-bs-target="#addReportModal">
+    		<c:if test='${message.equalsIgnoreCase("You Dont Have Any Reports. Press Here To Continue")}'>
+    		<h2>
+    		    <a href="" class="nav-link text-warning message" data-bs-toggle="modal" data-bs-target="#addReportModal">
     				You don't have any reports. Press Here to add.
     			</a>
     		</h2>
+    		</c:if>
+    		<c:if test='${!message.equalsIgnoreCase("You Dont Have Any Reports. Press Here To Continue")}'>
+    		<!-- href='apply?command=show_user_reports&username=<c:out value="${user.userName}&page=1"/>' -->
+    		<h2>
+    			<a href='apply?command=show_user_reports&username=<c:out value="${currentUserName}&page=1"/>' class="nav-link text-warning message">
+    				<c:out value='${message}'/>
+    			</a> 
+    		</h2>
+    		</c:if>
     		<h2>
     			<a href="apply?command=get_all_users&page=1" class="nav-link text-white message">
     				Back to Dashboard
     			</a> 
     		</h2>
   		</c:if>
+  		<c:if test="${list.size() != 0}">
+  			<h2>
+    			<a href="apply?command=get_all_users&page=1" class="nav-link text-warning message">
+    				<c:out value='${message}'/>
+    			</a> 
+    		</h2>
+  		</c:if>
   		<c:if test="${list.size() > 0}">
-    	<table class="table table-hover table-dark mb-0 p-3">
+    	<div class="container-fluid">
+    	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+			<ul class="navbar-nav ms-auto">
+				<c:if test="${numberOfPages >= 1}">
+					<li class="nav-item mx-4">
+                		<button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#dateFilterReportModal">Date Filter <i class="far fa-calendar-alt"></i></button>
+                	</li>
+                	<li class="nav-item mx-4">
+                		<a class="btn btn-warning btn-lg text-black" href='apply?command=show_user_reports&username=<c:out value="${currentUserName}&page=1"/>'>Reset Filter</a>
+                	</li>
+					<li class="nav-item mx-4">
+                		<button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#addReportModal">Add New Report<i class="fa fa-users"></i></button>
+                	</li>
+                </c:if>
+			</ul>
+		</nav>
+    	<table class="table table-hover table-dark mb-0">
   			<thead>
      			<tr>
       				<th scope="col"><h4>Report Title</h4></th>
@@ -82,7 +110,7 @@
     			</tr>
     		</c:forEach>		    						    						  						
   			</tbody>
-		</table>
+		</table> </div>
 		</c:if>
 		<c:if test="${numberOfPages > 1}">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
@@ -127,11 +155,32 @@
         		</div>
       		</div>
     	</div>
-    	<h2>
-    		<a href="apply?command=get_all_users&page=1" class="nav-link text-warning message">
-    			<c:out value='${message}'/>
-    		</a> 
-    	</h2>
+    	<div class="modal fade" id="dateFilterReportModal" tabindex="-1" aria-labelledby="dateFilterReportModal" aria-hidden="true">
+      		<div class="modal-dialog">
+        		<div class="modal-content bg-warning text-black">
+          			<div class="modal-header">
+            			<h5 class="modal-title" id="enrollLabel">Reports List Filter By Date</h5>
+            			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          			</div>
+          			<div class="modal-body">
+            			<p class="lead">Check Date To Make Filter By Date</p>
+            			<form method="GET" action='apply'>
+            				<input type="hidden" class="form-control" id="command" name="command" aria-describedby="commandHelp" value="show_user_reports_by_date"> 
+            			     <div class="mb-3">
+                				<label for="filterDate" class="col-form-label">Date:</label>
+                				<input type="date" class="form-control" id="filterDate" name="filterDate"/>
+              				</div>
+              				<input type="hidden" class="form-control" id="currentUserName" name="currentUserName" aria-describedby="userNameHelp" value='<c:out value="${currentUserName}"/>'> 				
+          					<div class="modal-footer">
+            					<button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+            					<button type="submit" class="btn btn-success">Add</button>
+          					</div>
+          				</form>
+        			</div>
+        		</div>
+      		</div>
+    	</div>
+
   		<script type="text/javascript">
   			let username = "<c:out value="${currentUserName}"/> "; username.trim();
   			let pages = "<c:out value='${numberOfPages}'/>";

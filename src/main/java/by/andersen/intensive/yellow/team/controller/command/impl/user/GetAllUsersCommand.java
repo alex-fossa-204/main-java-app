@@ -18,7 +18,7 @@ import java.util.List;
 
 public class GetAllUsersCommand implements Command {
 	
-    private static final int RECORDS_PER_PAGE = 8;
+    private static final int RECORDS_PER_PAGE = 7;
     
     private static final int FIRST_PAGE_INDEX = 1;
 

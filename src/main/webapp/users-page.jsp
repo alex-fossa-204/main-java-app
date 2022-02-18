@@ -39,7 +39,7 @@
             	</div>
         	</div>
     	</nav>
-    	
+    	<div class="container-fluid">
         <table class="table table-hover table-dark mb-0 p-3">
   			<thead>
      			<tr>
@@ -47,8 +47,6 @@
       				<th scope="col"><h4>First Name</h4></th>
       				<th scope="col"><h4>Last Name</h4></th>
       				<th scope="col"><h4>Email</h4></th>
-      				<th scope="col"><h4>Role</h4></th>
-      				<th scope="col"></th>
       				<th scope="col"></th>
     			</tr>
   			</thead>
@@ -59,7 +57,6 @@
       				<td scope="col" class="py-3"><c:out value="${user.firstName}"/></td>
       				<td scope="col" class="py-3"><c:out value="${user.lastName}"/></td>
       				<td scope="col" class="py-3"><c:out value="${user.emailAddress}"/></td>
-      				<td scope="col" class="py-3"><c:out value="${user.userRole}"/></td>
       				<td scope="col" class="py-3">
       					<a class="btn btn-success" href='apply?command=show_user_reports&username=<c:out value="${user.userName}&page=1"/>'>Reports</a>
       				</td>
@@ -75,6 +72,7 @@
     		</c:forEach>		    						    						  						
   			</tbody>
 		</table>
+		</div>
 		<c:if test="${numberOfPages > 1}">
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
 				<div class="pagination" id="pagination"></div>

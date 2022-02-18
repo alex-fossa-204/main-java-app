@@ -8,6 +8,10 @@ public enum MessageEnum {
 	
 	PRESS_HERE_TO_CONTINUE(". Press Here To Continue"),
 	
+	YOU_DONT_HAVE_ANY_REPORTS_DURING_THIS_PERIOD_MESSAGE("You Dont Have Any Reports During This Period Message"),
+	
+	YOU_DONT_HAVE_ANY_REPORTS_MESSAGE("You Dont Have Any Reports Message"),
+	
 	COMMAND_ERROR_MESSAGE("Command Error Message. Unknown Request:"),
 	SERVICE_ERROR_MESSAGE("Service Error Message"),
 	

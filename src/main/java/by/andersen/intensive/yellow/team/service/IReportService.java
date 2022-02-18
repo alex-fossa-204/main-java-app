@@ -1,13 +1,11 @@
 package by.andersen.intensive.yellow.team.service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import by.andersen.intensive.yellow.team.entity.dto.ReportDTO;
 import by.andersen.intensive.yellow.team.entity.dto.UserDTO;
 import by.andersen.intensive.yellow.team.entity.impl.Report;
-import by.andersen.intensive.yellow.team.entity.impl.User;
 import by.andersen.intensive.yellow.team.service.exception.ServiceException;
 
 public interface IReportService {
@@ -22,11 +20,17 @@ public interface IReportService {
 	
 	List<Report> getAllReportsForSingleUser(String username) throws ServiceException;
 	
+	List<Report> getAllReportsForSingleUserByDate(String username, String date) throws ServiceException;
+	
 	List<Report> getAllReportsForSingleUserPageable(String username, int page, int recordsPerPage, int totalPages) throws ServiceException;
+	
+	List<Report> getAllReportsForSingleUserPageableByDate(String username, String date, int page, int recordsPerPage, int totalPages) throws ServiceException;
 	
 	Report getReportByTitle(String reportTitle) throws ServiceException;
 	
 	Report getUserReportById(String username, long reportId) throws ServiceException;
 	
 	int getSingleUserReportsQuantity(String username) throws ServiceException;
+	
+	int getSingleUserReportsQuantityByDate(String username, String date) throws ServiceException;
 }

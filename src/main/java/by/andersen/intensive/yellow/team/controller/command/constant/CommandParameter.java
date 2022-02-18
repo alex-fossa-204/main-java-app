@@ -6,6 +6,7 @@ public enum CommandParameter {
 	USER_ID_PARAMETER("id"),
 	USERNAME_PARAMETER("username"),
 	OLD_USERNAME_PARAMETER("old_username"),
+	CURRENT_USERNAME_PARAMETER("currentUserName"),
 	FIRSTNAME_PARAMETER("firstName"),
 	SECONDNAME_PARAMETER("secondName"),
 	LASTNAME_PARAMETER("lastName"),
@@ -19,6 +20,7 @@ public enum CommandParameter {
 	REPORT_BODY_PARAMETER("reportBody"),
 	TIME_COSTS_PARAMETER("laborCosts"),
 	OLD_REPORT_TITLE_PARAMETER("oldReportTitle"),
+	OLD_REPORT_FILTER_DATE_PARAMETER("filterDate"),
 	
 	JSON_REPORT_DATE("reportDate");
 	
