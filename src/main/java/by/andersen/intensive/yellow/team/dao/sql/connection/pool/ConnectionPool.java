@@ -27,8 +27,7 @@ public class ConnectionPool {
     private static final String COULD_NOT_CLOSE_CONNECTION_POOL_EXCEPTION_MESSAGE = "Could not close connection pool";
     
     private final LinkedList<Connection> connectionQueue;
-    
-        
+      
     private ConnectionPool() {
     	connectionQueue = connectionQueueInitializer();   	
     }

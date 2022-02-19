@@ -8,6 +8,7 @@ public enum PageEnum {
 	USER_EDIT_FORM_PATH("/user-edit-page.jsp"),
 	REPORTS_PAGE("/reports-page.jsp"),
 	REPORT_FORM_PAGE("/report-form-page.jsp"),
+	DAEMON_PAGE("/daemon-page.jsp"),
 	JSON_REPORTS_PAGE("/json-page.jsp");
 	
 	String pagePath;

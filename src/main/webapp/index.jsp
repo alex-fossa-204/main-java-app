@@ -11,7 +11,7 @@
     	<style><%@ include file="/static/css/style.css"%></style>
 		<title>Intensive Task</title>
 	</head>
-	<body>
+	<body class="bg-dark">
   		<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 fixed-top">
         	<div class="container-fluid">
             	<a href="#" class="navbar-brand mx-4 font-italic"><h2><span class="text-warning">Andersen Intensive</span></h2></a>

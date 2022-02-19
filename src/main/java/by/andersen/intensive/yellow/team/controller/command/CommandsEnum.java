@@ -2,6 +2,7 @@ package by.andersen.intensive.yellow.team.controller.command;
 
 import by.andersen.intensive.yellow.team.controller.command.impl.global.EmptyCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.global.GetJsonReportsCommand;
+import by.andersen.intensive.yellow.team.controller.command.impl.global.RunDaemonCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.AddReportCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.DeleteReportCommand;
 import by.andersen.intensive.yellow.team.controller.command.impl.report.ShowReportEditFormCommand;
@@ -42,6 +43,8 @@ public enum CommandsEnum {
 	SHOW_TODAY_USER_REPORTS(new ShowTodayUserReportsCommand()),
 	
 	UPDATE_REPORT(new UpdateReportCommand()),
+	
+	RUN_DAEMON(new RunDaemonCommand()),
 	
 	EMPTY_COMMAND(new EmptyCommand());
 	

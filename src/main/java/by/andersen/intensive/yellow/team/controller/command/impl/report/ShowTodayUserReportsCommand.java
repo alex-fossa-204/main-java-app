@@ -50,7 +50,7 @@ public class ShowTodayUserReportsCommand implements Command {
 			httpServletRequest.setAttribute(COMMAND_TYPE_ATTRIBUTE.getAttributeName(), SHOW_TODAY_USER_REPORTS.name().toLowerCase());
 			boolean isEmptyList = reportsPage.isEmpty();
 			if (isEmptyList) {
-				resultPage = new Page(REPORTS_PAGE.getPagePath(), false, YOU_DONT_HAVE_ANY_REPORTS_MESSAGE.getMessage());
+				resultPage = new Page(REPORTS_PAGE.getPagePath(), false, YOU_DONT_HAVE_ANY_REPORTS_DURING_THIS_PERIOD_MESSAGE.getMessage());
 			}
 			if (!isEmptyList) {
 				resultPage = new Page(REPORTS_PAGE.getPagePath(), false);

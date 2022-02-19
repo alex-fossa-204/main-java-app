@@ -44,9 +44,9 @@
     				</a>
     			</h2>
     		</c:if>
-    		<c:if test='${message.equalsIgnoreCase("You Dont Have Any Reports During This Period Message")}'>
+    		<c:if test='${message.equalsIgnoreCase("You Dont Have Any Reports During This Period. Press Here To Continue")}'>
     			<h2>
-    				<a href='apply?command=show_user_reports&username=<c:out value="${currentUserName}&page=1"/>' class="nav-link text-warning message">
+    				<a href='apply?command=show_user_reports&currentUserName=<c:out value="${currentUserName}&page=1"/>' class="nav-link text-warning message">
     					<c:out value='${message}'/>
     				</a> 
     			</h2>
