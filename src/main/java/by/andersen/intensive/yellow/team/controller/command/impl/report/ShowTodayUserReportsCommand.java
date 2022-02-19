@@ -32,20 +32,19 @@ public class ShowTodayUserReportsCommand implements Command {
 		int pagesQuantity = 0;
 		String pageReqParameterValue = httpServletRequest.getParameter(PAGE_PARAMETER.getParameterName());
 		String currentUserName = httpServletRequest.getParameter(CURRENT_USERNAME_PARAMETER.getParameterName());
-		String filterDate = LocalDate.now().toString();
 		if (pageReqParameterValue != null) {
 			pageIndex = Integer.valueOf(pageReqParameterValue);
 		}
 		try {
-			int recordsQuantity = reportService.getSingleUserReportsQuantityByDate(currentUserName, filterDate);
+			int recordsQuantity = reportService.getSingleUserReportsQuantityByDate(currentUserName, LocalDate.now().toString());
 			pagesQuantity = calculatePagesQuantity(recordsQuantity, RECORDS_PER_PAGE);
 			List<Report> reportsPage = reportService.getAllReportsForSingleUserPageableByDate(currentUserName,
-					filterDate, pageIndex, RECORDS_PER_PAGE, pagesQuantity);
+					LocalDate.now().toString(), pageIndex, RECORDS_PER_PAGE, pagesQuantity);
 			httpServletRequest.setAttribute(CURRENT_USERNAME_ATTRIBUTE.getAttributeName(), currentUserName);
 			httpServletRequest.setAttribute(NUMBER_OF_PAGES_ATTRIBUTE.getAttributeName(), pagesQuantity);
 			httpServletRequest.setAttribute(CURRENT_PAGE_INDEX.getAttributeName(), pageIndex);
 			httpServletRequest.setAttribute(REPORTS_PAGE_CONTENT_ATTRIBUTE.getAttributeName(), reportsPage);
-			httpServletRequest.setAttribute(REPORT_DATE_ATTRIBUTE.getAttributeName(), filterDate);
+			httpServletRequest.setAttribute(REPORT_DATE_ATTRIBUTE.getAttributeName(), LocalDate.now().toString());
 			httpServletRequest.setAttribute(RECORDS_PER_PAGE_ATTRIBUTE.getAttributeName(), RECORDS_PER_PAGE);
 			httpServletRequest.setAttribute(COMMAND_TYPE_ATTRIBUTE.getAttributeName(), SHOW_TODAY_USER_REPORTS.name().toLowerCase());
 			boolean isEmptyList = reportsPage.isEmpty();
