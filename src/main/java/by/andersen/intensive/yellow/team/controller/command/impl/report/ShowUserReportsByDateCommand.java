@@ -1,5 +1,6 @@
 package by.andersen.intensive.yellow.team.controller.command.impl.report;
 
+import static by.andersen.intensive.yellow.team.controller.command.CommandsEnum.*;
 import static by.andersen.intensive.yellow.team.controller.command.constant.CommandAttribute.*;
 import static by.andersen.intensive.yellow.team.controller.command.constant.CommandParameter.*;
 import static by.andersen.intensive.yellow.team.controller.command.constant.MessageEnum.*;
@@ -38,11 +39,14 @@ public class ShowUserReportsByDateCommand implements Command {
 			int recordsQuantity = reportService.getSingleUserReportsQuantityByDate(currentUserName, filterDate);
 			pagesQuantity = calculatePagesQuantity(recordsQuantity, RECORDS_PER_PAGE);
 			List<Report> reportsPage = reportService.getAllReportsForSingleUserPageableByDate(currentUserName,
-					filterDate, pageIndex, recordsQuantity, pagesQuantity);
+					filterDate, pageIndex, RECORDS_PER_PAGE, pagesQuantity);
 			httpServletRequest.setAttribute(CURRENT_USERNAME_ATTRIBUTE.getAttributeName(), currentUserName);
 			httpServletRequest.setAttribute(NUMBER_OF_PAGES_ATTRIBUTE.getAttributeName(), pagesQuantity);
 			httpServletRequest.setAttribute(CURRENT_PAGE_INDEX.getAttributeName(), pageIndex);
-			httpServletRequest.setAttribute(USERS_PAGE_CONTENT_ATTRIBUTE.getAttributeName(), reportsPage);
+			httpServletRequest.setAttribute(REPORTS_PAGE_CONTENT_ATTRIBUTE.getAttributeName(), reportsPage);
+			httpServletRequest.setAttribute(REPORT_DATE_ATTRIBUTE.getAttributeName(), filterDate);
+			httpServletRequest.setAttribute(RECORDS_PER_PAGE_ATTRIBUTE.getAttributeName(), RECORDS_PER_PAGE);
+			httpServletRequest.setAttribute(COMMAND_TYPE_ATTRIBUTE.getAttributeName(), SHOW_USER_REPORTS_BY_DATE.name().toLowerCase());
 			boolean isEmptyList = reportsPage.isEmpty();
 			if (isEmptyList) {
 				resultPage = new Page(REPORTS_PAGE.getPagePath(), false,

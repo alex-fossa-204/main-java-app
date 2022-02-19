@@ -30,13 +30,14 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 	
 	private static final String SELECT_ALL_USERS_REPORTS_QUERY = "SELECT users.user_firstname, users.user_secondname, users.user_lastname, reports.id, reports.title, reports.reported_by, reports.date, reports.labor_costs, reports.body FROM users INNER JOIN reports ON users.id = reports.reported_by ORDER BY date ASC";
 	private static final String SELECT_USER_REPORTS_QUERY = "SELECT users.user_firstname, users.user_secondname, users.user_lastname, reports.id, reports.title, reports.reported_by, reports.date, reports.labor_costs, reports.body FROM users INNER JOIN reports ON users.id = reports.reported_by WHERE users.username =";
-	private static final String SELECT_REPORT_BY_ID_QUERY = "SELECT users.user_firstname, users.user_secondname, users.user_lastname, reports.id, reports.title, reports.reported_by, reports.date, reports.labor_costs, reports.body FROM users INNER JOIN reports ON users.id = reports.reported_by WHERE reports.id = ? ORDER BY date ASC";
+	private static final String SELECT_REPORT_BY_ID_QUERY = "SELECT users.user_firstname, users.user_secondname, users.user_lastname, reports.id, reports.title, reports.reported_by, reports.date, reports.labor_costs, reports.body FROM users INNER JOIN reports ON users.id = reports.reported_by WHERE reports.id = ? ORDER BY date DESC";
 	private static final String SELECT_REPORT_BY_TITLE_QUERY = "SELECT users.user_firstname, users.user_secondname, users.user_lastname, reports.id, reports.title, reports.reported_by, reports.date, reports.labor_costs, reports.body FROM users INNER JOIN reports ON users.id = reports.reported_by WHERE reports.title = ?";
 	private static final String SELECT_USER_REPORT_BY_ID_QUERY = "SELECT users.user_firstname, users.user_secondname, users.user_lastname, reports.id, reports.title, reports.reported_by, reports.date, reports.labor_costs, reports.body FROM users INNER JOIN reports ON users.id = reports.reported_by WHERE reports.id = ? AND users.username = ?";
 	private static final String SAVE_USER_REPORT_QUERY = "INSERT INTO reports (title, body, reported_by, labor_costs) VALUES (?, ?, ?, ?)";
 	private static final String DELETE_REPORT_BY_ID_QUERY = "DELETE FROM reports WHERE id=?";
 	private static final String UPDATE_REPORT_QUERY = "UPDATE reports SET title=?, body=?, labor_costs=? WHERE id = ?";
 	private static final String AND_BY_DATE_SELECTION_QUERY = "AND reports.date =";
+	private static final String ORDER_BY_DATE_QUERY = "ORDER BY reports.date DESC";
 	
 	public SqlReportDAO(Connection connection) {
 		super(connection);
@@ -62,7 +63,7 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 		List<Report> entitiesList = new ArrayList<Report>();
 		
 		try (Statement statement = connection.createStatement()) {
-			String sqlQuery = String.format("%s '%s' %s '%s'", SELECT_USER_REPORTS_QUERY, username, AND_BY_DATE_SELECTION_QUERY, date);
+			String sqlQuery = String.format("%s '%s' %s '%s' %s", SELECT_USER_REPORTS_QUERY, username, AND_BY_DATE_SELECTION_QUERY, date, ORDER_BY_DATE_QUERY);
 			ResultSet resultSet = statement.executeQuery(sqlQuery);
 			while (resultSet.next()) {
 				Report entity = buildEntity(resultSet);
@@ -93,7 +94,7 @@ public class SqlReportDAO extends SqlAbstractDAO<Report> implements IReportDAO {
 		List<Report> entitiesList = new ArrayList<Report>();
 		
 		try (Statement statement = connection.createStatement()) {
-			String sqlQuery = String.format("%s '%s'", SELECT_USER_REPORTS_QUERY, username);
+			String sqlQuery = String.format("%s '%s' %s", SELECT_USER_REPORTS_QUERY, username, ORDER_BY_DATE_QUERY);
 			ResultSet resultSet = statement.executeQuery(sqlQuery);
 			while (resultSet.next()) {
 				Report entity = buildEntity(resultSet);

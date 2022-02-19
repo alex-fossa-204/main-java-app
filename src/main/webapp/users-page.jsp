@@ -14,7 +14,7 @@
 	<body class="bg-dark">
   		<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
         	<div class="container-fluid">
-            	<a href="#" class="navbar-brand mx-4 font-italic">
+            	<a href="#" class="navbar-brand mx-0 font-italic">
             		<h2>
             			<span class="text-warning">Andersen Intensive </span> 
             		</h2>
@@ -58,7 +58,7 @@
       				<td scope="col" class="py-3"><c:out value="${user.lastName}"/></td>
       				<td scope="col" class="py-3"><c:out value="${user.emailAddress}"/></td>
       				<td scope="col" class="py-3">
-      					<a class="btn btn-success" href='apply?command=show_user_reports&username=<c:out value="${user.userName}&page=1"/>'>Reports</a>
+      					<a class="btn btn-success" href='apply?command=show_today_user_reports&currentUserName=<c:out value="${user.userName}&page=1"/>'>Reports</a>
       				</td>
       				<td scope="col" class="py-3">	
       					<a class="btn btn-warning" href='apply?command=show_user_info&username=<c:out value="${user.userName}"/>'>Update</a>

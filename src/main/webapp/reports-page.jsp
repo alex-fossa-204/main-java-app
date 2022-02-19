@@ -14,16 +14,16 @@
 	<body class="bg-dark">
   		<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
         	<div class="container-fluid">
-            	<a href="#" class="navbar-brand mx-4 font-italic">
+            	<a href="#" class="navbar-brand font-italic">
             		<h2> Reports table for: 
-            			<span class="text-warning"><c:out value="${currentUserName}"/>  </span> 
+            			<span class="text-warning"><c:out value="${currentUserName}"/></span> 
             		</h2>
             	</a>
             	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation-menu"> 
                 	<span class="navbar-toggler-icon"></span>
             	</button>
             	<div class="collapse navbar-collapse mx-4" id = "navigation-menu">
-                	<ul class="navbar-nav ms-auto">
+            	    <ul class="navbar-nav ms-auto">
                     	<li class="nav-item">
                     		<a href="apply?command=get_all_users&page=1" class="nav-link">
             					<h2>Dashboard <i class="fa fa-cogs"></i></h2>
@@ -38,20 +38,26 @@
     	</nav>
     	<c:if test="${list.size() < 1}">
     		<c:if test='${message.equalsIgnoreCase("You Dont Have Any Reports. Press Here To Continue")}'>
-    		<h2>
-    		    <a href="" class="nav-link text-warning message" data-bs-toggle="modal" data-bs-target="#addReportModal">
-    				You don't have any reports. Press Here to add.
-    			</a>
-    		</h2>
+    			<h2>
+    		    	<a href="" class="nav-link text-warning message" data-bs-toggle="modal" data-bs-target="#addReportModal">
+    					You don't have any reports. Press Here to add.
+    				</a>
+    			</h2>
     		</c:if>
-    		<c:if test='${!message.equalsIgnoreCase("You Dont Have Any Reports. Press Here To Continue")}'>
-    		<!-- href='apply?command=show_user_reports&username=<c:out value="${user.userName}&page=1"/>' -->
-    		<h2>
-    			<a href='apply?command=show_user_reports&username=<c:out value="${currentUserName}&page=1"/>' class="nav-link text-warning message">
-    				<c:out value='${message}'/>
-    			</a> 
-    		</h2>
+    		<c:if test='${message.equalsIgnoreCase("You Dont Have Any Reports During This Period Message")}'>
+    			<h2>
+    				<a href='apply?command=show_user_reports&username=<c:out value="${currentUserName}&page=1"/>' class="nav-link text-warning message">
+    					<c:out value='${message}'/>
+    				</a> 
+    			</h2>
     		</c:if>
+    		<c:if test='${message.equalsIgnoreCase("Report Added Successfully. Press Here To Continue")}'>
+    			<h2>
+    				<a href='apply?command=show_today_user_reports&currentUserName=<c:out value="${currentUserName}&page=1"/>' class="nav-link text-warning message">
+    					<c:out value='${message}'/>
+    				</a> 
+    			</h2>
+    		</c:if>    		
     		<h2>
     			<a href="apply?command=get_all_users&page=1" class="nav-link text-white message">
     				Back to Dashboard
@@ -60,7 +66,7 @@
   		</c:if>
   		<c:if test="${list.size() != 0}">
   			<h2>
-    			<a href="apply?command=get_all_users&page=1" class="nav-link text-warning message">
+    			<a href='apply?command=show_today_user_reports&currentUserName=<c:out value="${currentUserName}&page=1"/>' class="nav-link text-warning message">
     				<c:out value='${message}'/>
     			</a> 
     		</h2>
@@ -68,16 +74,22 @@
   		<c:if test="${list.size() > 0}">
     	<div class="container-fluid">
     	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+    	     <div class="navbar-brand">
+            	<h2>Reports for: <span class="text-warning"><c:out value="${reportDate}"/></span></h2>
+           	</div>
 			<ul class="navbar-nav ms-auto">
 				<c:if test="${numberOfPages >= 1}">
 					<li class="nav-item mx-4">
                 		<button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#dateFilterReportModal">Date Filter <i class="far fa-calendar-alt"></i></button>
                 	</li>
                 	<li class="nav-item mx-4">
-                		<a class="btn btn-warning btn-lg text-black" href='apply?command=show_user_reports&username=<c:out value="${currentUserName}&page=1"/>'>Reset Filter</a>
+                		<a class="btn btn-warning btn-lg text-black" href='apply?command=show_today_user_reports&currentUserName=<c:out value="${currentUserName}&page=1"/>'>Reset Filter</a>
+                	</li>
+                	<li class="nav-item mx-4">
+                		<a class="btn btn-warning btn-lg text-black" href='apply?command=show_user_reports&currentUserName=<c:out value="${currentUserName}&page=1"/>'>Show All</a>
                 	</li>
 					<li class="nav-item mx-4">
-                		<button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#addReportModal">Add New Report<i class="fa fa-users"></i></button>
+                		<button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#addReportModal">Add Report<i class="fa fa-users"></i></button>
                 	</li>
                 </c:if>
 			</ul>
@@ -182,6 +194,10 @@
     	</div>
 
   		<script type="text/javascript">
+  			let date = "<c:out value="${reportDate}"/>";
+  			console.log('date declaration' + date);
+  			let commandBody = "<c:out value="${command}"/>";
+  			let recordsPerPage = "<c:out value="${recordsPerPage}"/>";
   			let username = "<c:out value="${currentUserName}"/> "; username.trim();
   			let pages = "<c:out value='${numberOfPages}'/>";
   			let pageSelectorCounter = "<c:out value='${numberOfPages}'/>";

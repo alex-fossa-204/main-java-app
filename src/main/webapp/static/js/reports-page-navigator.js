@@ -14,7 +14,8 @@ const pageNumbers = (total, max, current) => {
   return Array.from({length: max}, (_, i) => (i + 1) + from);
 }
 
-function PaginationButton(totalPages, maxPagesVisible = 5, currentPage = 1) {
+function PaginationButton(totalPages, maxPagesVisible, currentPage = 1, commandType) {
+	console.log('Pagination button body: ' + commandType);
   let pages = pageNumbers(totalPages, maxPagesVisible, currentPage);
   let currentPageBtn = null;
   const buttons = new Map();
@@ -34,8 +35,16 @@ function PaginationButton(totalPages, maxPagesVisible = 5, currentPage = 1) {
     buttonElement.textContent = label;
     let pageNum = parseInt(label);let isNotNumber = isNaN(pageNum);
 	if(!isNotNumber) {
-		let path = 'apply?command=show_user_reports&username=' + username + '&page=' + pageNum;
+		let path = 'apply?command=empty_command';
+		let isNotUndefiedOrEmpty = date != null && typeof date !== "undefined";
+		if(!isNotUndefiedOrEmpty) {
+			path = 'apply?command=' + commandType + '&currentUserName=' + username + '&page=' + pag
+		}
+		if(isNotUndefiedOrEmpty) {
+			path = 'apply?command=' + commandType + '&currentUserName=' + username + '&page=' + pageNum + '&filterDate=' + date;
+		}
 		path = path.replace(' ', '');
+		console.log(path);
 		buttonElement.href = path;
 	}
     buttonElement.className = `page-btn ${cls}`;
@@ -94,8 +103,8 @@ function PaginationButton(totalPages, maxPagesVisible = 5, currentPage = 1) {
   }
 }
 
-
-const paginationButtons = new PaginationButton(pages, pageSelectorCounter);
+console.log(commandBody);
+const paginationButtons = new PaginationButton(pages, pages, pageSelectorCounter, commandBody);
 
 paginationButtons.render();
 

@@ -11,6 +11,7 @@ import by.andersen.intensive.yellow.team.service.impl.ReportService;
 import static by.andersen.intensive.yellow.team.controller.command.constant.CommandParameter.*;
 import static by.andersen.intensive.yellow.team.controller.page.constant.PageEnum.*;
 import static by.andersen.intensive.yellow.team.controller.command.constant.MessageEnum.*;
+import static by.andersen.intensive.yellow.team.controller.command.constant.CommandAttribute.*;
 
 public class AddReportCommand implements Command {
 
@@ -29,6 +30,7 @@ public class AddReportCommand implements Command {
 		try {
 			isReportAdded = reportService.addUserReport(currentUserName, reportTitle, reportBody, laborCosts);
 			if(isReportAdded) {
+				httpServletRequest.setAttribute(CURRENT_USERNAME_ATTRIBUTE.getAttributeName(), currentUserName);
 				resultPage = new Page(REPORTS_PAGE.getPagePath(), false, REPORT_ADDED_SUCCESSFULLY_MESSAGE.getMessage());
 			}
 			if(!isReportAdded) {
