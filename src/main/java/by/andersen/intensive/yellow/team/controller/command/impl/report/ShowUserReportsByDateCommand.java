@@ -49,8 +49,7 @@ public class ShowUserReportsByDateCommand implements Command {
 			httpServletRequest.setAttribute(COMMAND_TYPE_ATTRIBUTE.getAttributeName(), SHOW_USER_REPORTS_BY_DATE.name().toLowerCase());
 			boolean isEmptyList = reportsPage.isEmpty();
 			if (isEmptyList) {
-				resultPage = new Page(REPORTS_PAGE.getPagePath(), false,
-						YOU_DONT_HAVE_ANY_REPORTS_DURING_THIS_PERIOD_MESSAGE.getMessage());
+				resultPage = new Page(REPORTS_PAGE.getPagePath(), false, YOU_DONT_HAVE_ANY_REPORTS_DURING_THIS_PERIOD_MESSAGE.getMessage());
 			}
 			if (!isEmptyList) {
 				resultPage = new Page(REPORTS_PAGE.getPagePath(), false);

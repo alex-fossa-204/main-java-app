@@ -40,7 +40,7 @@
     		<c:if test='${message.equalsIgnoreCase("You Dont Have Any Reports. Press Here To Continue")}'>
     			<h2>
     		    	<a href="" class="nav-link text-warning message" data-bs-toggle="modal" data-bs-target="#addReportModal">
-    					You don't have any reports. Press Here to add.
+    					<c:out value='${message}'/>
     				</a>
     			</h2>
     		</c:if>
