@@ -22,13 +22,31 @@ import by.andersen.intensive.yellow.team.service.exception.ServiceException;
 import by.andersen.intensive.yellow.team.service.impl.ReportService;
 
 public class GetJsonReportsCommand implements Command {
+	
+	private LocalDate currentDate;
+	
+	public GetJsonReportsCommand() {
+		super();
+		new Thread(() -> {
+			while(true) {
+				this.currentDate = LocalDate.now();
+				try {
+					Thread.sleep(60001);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	@Override
 	public Page execute(HttpServletRequest httpServletRequest) {
 		Page resultPage = null;
+		currentDate = LocalDate.now();
 		IReportService reportService = new ReportService();
+
 		try {
-			Map<UserDTO, List<ReportDTO>> map = reportService.getAllUsersReportsDtoMapByDate(LocalDate.now().toString());
+			Map<UserDTO, List<ReportDTO>> map = reportService.getAllUsersReportsDtoMapByDate(currentDate.toString());
 			Gson gsonParser = getGsonParser();
 			String jsonReport = gsonParser.toJson(map);
 			httpServletRequest.setAttribute(JSON_DATA_ATTRIBUTE.getAttributeName(), jsonReport);

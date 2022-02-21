@@ -58,7 +58,7 @@
                             	</div>
                             	<h3 class="card-title mb-3">Java EE <i class="fab fa-java white"></i></h3>
                             	<p class="card-text">
-                                	Java Enter[rise Edition - best variant to create high-performance server applications.
+                                	Java Enterprise Edition - best variant to create high-performance server applications.
                             	</p>
                         	</div>
                     	</div>
